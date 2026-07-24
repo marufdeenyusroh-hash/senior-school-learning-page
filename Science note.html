@@ -190,9 +190,44 @@ nav a:hover {
   font-size: 20px;
   cursor: pointer;
 }
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  width: auto;
+  min-height: auto;
+  padding: 8px 15px;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.back-btn:hover {
+  background: white;
+  color: #272644;
+  transform: none;
+}
+
+
+/* MOBILE BACK BUTTON */
+
+@media (max-width: 600px) {
+  .back-btn {
+    top: 15px;
+    left: 15px;
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+}
 </style>
 </head>
-
+<button class="back-btn" onclick="goHome()">← Back</button>
 <body>
 
 <header>
@@ -293,6 +328,9 @@ nav a:hover {
 </div>
 
 <script>
+  function goHome() {
+  window.location.href = "index.html";
+}
 /* FUNCTION TO SHOW OR HIDE CARDS BY CATEGORY */
 function filterNotes(category, clickedButton) {
   let cards = document.getElementsByClassName('card');
@@ -345,6 +383,14 @@ function openPDF(filePath) {
 function closePDF() {
   document.getElementById('pdfModal').style.display = "none";
   document.getElementById('pdfViewer').src = "";
+}
+function closePDF() {
+  document.getElementById('pdfModal').style.display = "none";
+  document.getElementById('pdfViewer').src = "";
+}
+
+function goHome() {
+  window.location.href = "Sciencedashboard.html";
 }
 </script>
 
