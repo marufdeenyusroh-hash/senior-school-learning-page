@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+}
+
+/* LEFT SIDE */
+.left{
+  flex:1;
+  background:linear-gradient(135deg,#4f46e5,#4338ca);
+  color:white;
+  padding:60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.left h1{
+  font-size:42px;
+  margin-bottom:20px;
+}
+
+.left p{
+  line-height:1.6;
+  margin-bottom:30px;
+}
+
+.features{
+  list-style:none;
+}
+
+.features li{
+  margin-bottom:15px;
+  font-size:15px;
+}
+
+/* RIGHT SIDE */
+.right{
+  flex:1;
+  background:#f9fafb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.form-box{
+  width:350px;
+}
+
+.form-box h2{
+  font-size:28px;
+  margin-bottom:5px;
+}
+
+.form-box p{
+  color:gray;
+  margin-bottom:20px;
+}
+
+/* TOGGLE BUTTON */
+.tabs{
+  display:flex;
+  background:#e5e7eb;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+
+.tabs div{
+  flex:1;
+  padding:10px;
+  text-align:center;
+  cursor:pointer;
+}
+
+.tabs .active{
+  background:white;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+/* INPUT */
+.input-box{
+  margin-bottom:15px;
+  position:relative;
+}
+
+.input-box input, .input-box select{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+.input-box select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.input-box span{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  user-select: none;
+}
+
+/* OPTIONS */
+.options{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  margin-bottom:15px;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#4f46e5;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  transform:scale(1.03);
+}
+
+a{
+  text-decoration:none;
+  color:#4f46e5;
+}
+</style>
+</head>
+
+<body>
+<div class="left">
+  <h1>Level Up <br>Your Art Skills.</h1>
+  <p>
+    Sign in to access your personalized learning dashboard —
+    Video Lessons, Notes, Past Questions and Quizzes.
+  </p>
+
+  <ul class="features">
+    <li>✔ Video Lessons</li>
+    <li>✔ Lesson Notes</li>
+    <li>✔ Past Questions</li>
+    <li>✔ Quizzes</li>
+  </ul>
+</div>
+
+<div class="right">
+  <div class="form-box">
+    <div id="loginForm">
+      <h2>Welcome back</h2>
+      <p>Sign in to your account to continue</p>
+
+      <div class="input-box">
+        <input type="text" id="loginName" placeholder="Enter Full Name">
+      </div>
+
+      <div class="input-box">
+        <input type="password" id="loginPassword" placeholder="Enter your password">
+        <span onclick="togglePassword('loginPassword')">👁</span>
+      </div>
+
+      <div class="options">
+        <label><input type="checkbox"> Remember me</label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button onclick="login()">Sign in →</button>
+
+      <p style="margin-top:10px; text-align:center;">
+        Don't have an account?
+        <a href="#" onclick="showRegister()">Register</a>
+      </p>
+    </div>
+
+    <div id="registerForm" style="display:none;">
+      <h2>Create Account</h2>
+      <p>Register to start learning</p>
+
+      <div class="input-box">
+        <input type="text" id="regName" placeholder="Full Name">
+      </div>
+
+      <div class="input-box">
+        <input type="text" id="regSchool" placeholder="School Name">
+      </div>
+
+      <div class="input-box">
+        <select id="regGender">
+          <option value="" disabled selected>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Rather not say</option>
+        </select>
+      </div>
+
+      <div class="input-box">
+        <input type="password" id="regPassword" placeholder="Password">
+        <span onclick="togglePassword('regPassword')">👁</span>
+      </div>
+
+      <div class="input-box">
+        <input type="password" id="regConfirmPassword" placeholder="Confirm Password">
+        <span onclick="togglePassword('regConfirmPassword')">👁</span>
+      </div>
+
+      <button onclick="register()">Register</button>
+
+      <p style="margin-top:10px; text-align:center;">
+        Already have an account?
+        <a href="#" onclick="showLogin()">Login</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function togglePassword(id){
+  let p = document.getElementById(id);
+  p.type = p.type === 'password' ? 'text' : 'password';
+}
+
+// SWITCH FORMS
+function showRegister(){
+  document.getElementById('loginForm').style.display = 'none';
+  document.getElementById('registerForm').style.display = 'block';
+}
+
+function showLogin(){
+  document.getElementById('registerForm').style.display = 'none';
+  document.getElementById('loginForm').style.display = 'block';
+}
+
+// REGISTER VALIDATION AND LOCALSTORAGE MANAGEMENT
+function register(){
+  let name = document.getElementById('regName').value.trim();
+  let school = document.getElementById('regSchool').value.trim();
+  let gender = document.getElementById('regGender').value;
+  let password = document.getElementById('regPassword').value;
+  let confirmPassword = document.getElementById('regConfirmPassword').value;
+
+  if(!name || !school || !gender ||!password || !confirmPassword){
+    alert('Please complete all fields');
+    return;
+  }
+
+  if(password !== confirmPassword){
+    alert('Passwords do not match!');
+    return;
+  }
+
+  let user = {name, school, gender, password};
+  
+  // Save using Name as the access key
+  localStorage.setItem(name, JSON.stringify(user));
+
+  alert('Registration successful!');
+  showLogin();
+}
+
+// LOGIN VIA NAME KEY
+function login(){
+  let name = document.getElementById('loginName').value.trim();
+  let password = document.getElementById('loginPassword').value;
+
+  if(!name || !password){
+    alert('Please fill out all fields');
+    return;
+  }
+
+  let storedUser = localStorage.getItem(name);
+
+  if(!storedUser){
+    alert('User profile not found. Verify spelling or register.');
+    return;
+  }
+
+  let user = JSON.parse(storedUser);
+
+  if(user.password === password){
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    window.location.href = 'Art dashboard.html';
+  } else {
+    alert('Incorrect password');
+  }
+}
+</script>
+
+</body>
+</html>

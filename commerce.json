@@ -1,0 +1,954 @@
+{
+  "questions": [
+    {
+      "question": "The trade activity that involves buying and selling of goods and services within the boundaries of a single country is called ______.",
+      "options": [
+        "Home Trade",
+        "Foreign Trade",
+        "Export Trade",
+        "Entrepot Trade"
+      ],
+      "answer": "Home Trade"
+    },
+    {
+      "question": "The trader who buys goods in large quantities directly from the manufacturer and sells in smaller quantities to retailers is the ______.",
+      "options": [
+        "Wholesaler",
+        "Retailer",
+        "Consumer",
+        "Broker"
+      ],
+      "answer": "Wholesaler"
+    },
+    {
+      "question": "A petty trader who moves from one place to another carrying goods on his head or on a bicycle to sell to people is a ______.",
+      "options": [
+        "Hawker",
+        "Supermarket owner",
+        "Wholesaler",
+        "Departmental store manager"
+      ],
+      "answer": "Hawker"
+    },
+    {
+      "question": "The final link or person in the chain of distribution of goods and services is the ______.",
+      "options": [
+        "Consumer",
+        "Retailer",
+        "Wholesaler",
+        "Manufacturer"
+      ],
+      "answer": "Consumer"
+    },
+    {
+      "question": "Which of the following activities is classified as an aid to trade?",
+      "options": [
+        "Banking",
+        "Farming",
+        "Fishing",
+        "Quarrying"
+      ],
+      "answer": "Banking"
+    },
+    {
+      "question": "The aid to trade that helps businessmen store goods safely until they are needed by customers is ______.",
+      "options": [
+        "Warehousing",
+        "Advertising",
+        "Insurance",
+        "Transport"
+      ],
+      "answer": "Warehousing"
+    },
+    {
+      "question": "The primary purpose of insurance in commercial business activities is to ______.",
+      "options": [
+        "Minimize or cover the risk of financial loss",
+        "Provide permanent employment",
+        "Advertise newly made goods",
+        "Transport raw materials to factories"
+      ],
+      "answer": "Minimize or cover the risk of financial loss"
+    },
+    {
+      "question": "The physical movement of workers, raw materials, and finished goods from one place to another is made possible by ______.",
+      "options": [
+        "Transport",
+        "Advertising",
+        "Banking",
+        "Communication"
+      ],
+      "answer": "Transport"
+    },
+    {
+      "question": "A business enterprise that is owned, financed, and fully managed by only one individual is known as a ______.",
+      "options": [
+        "Sole Proprietorship",
+        "Partnership",
+        "Public Limited Company",
+        "Cooperative Society"
+      ],
+      "answer": "Sole Proprietorship"
+    },
+    {
+      "question": "An association of between two and twenty people who agree to jointly own and run a business enterprise for profit is a ______.",
+      "options": [
+        "Partnership",
+        "Sole Proprietorship",
+        "Statutory Corporation",
+        "Public Company"
+      ],
+      "answer": "Partnership"
+    },
+    {
+      "question": "The money or total resource value used by an entrepreneur to set up and successfully run a business enterprise is called ______.",
+      "options": [
+        "Capital",
+        "Profit",
+        "Loss",
+        "Debenture"
+      ],
+      "answer": "Capital"
+    },
+    {
+      "question": "A written instruction or order given by a bank customer to his bank to pay a specific sum of money to a named person is a ______.",
+      "options": [
+        "Cheque",
+        "Receipt",
+        "Invoice",
+        "Debit note"
+      ],
+      "answer": "Cheque"
+    },
+    {
+      "question": "The traditional system of trade where goods are exchanged directly for other goods without the use of money is called the ______.",
+      "options": [
+        "Barter system",
+        "Home trade system",
+        "Cash trade system",
+        "Wholesale system"
+      ],
+      "answer": "Barter system"
+    },
+    {
+      "question": "The type of trade that involves buying goods from one foreign nation and selling them to another foreign country is known as ______ (Set Var COM-14)",
+      "options": [
+        "Export trade",
+        "Import trade",
+        "Entrepot trade",
+        "Bilateral trade"
+      ],
+      "answer": "Entrepot trade"
+    },
+    {
+      "question": "A commercial document sent by a seller to a buyer to correct an undercharge in an earlier transaction is a/an ______ (Set Var COM-15)",
+      "options": [
+        "Invoice",
+        "Debit Note",
+        "Credit Note",
+        "Proforma Invoice"
+      ],
+      "answer": "Debit Note"
+    },
+    {
+      "question": "Which of the following business organizational frameworks issues shares to the general public on the stock exchange to raise funds? (Set Var COM-16)",
+      "options": [
+        "Private Limited Company",
+        "Public Limited Company",
+        "Sole Proprietorship",
+        "Partnership"
+      ],
+      "answer": "Public Limited Company"
+    },
+    {
+      "question": "The commercial practice of using media networks like television, radio, and flyers to inform consumers about new products is ______ (Set Var COM-17)",
+      "options": [
+        "Public relations",
+        "Warehousing",
+        "Advertising",
+        "Communication"
+      ],
+      "answer": "Advertising"
+    },
+    {
+      "question": "The dynamic highly-secured marketplace where existing stocks, shares, and government bonds are bought and sold daily is the ______ (Set Var COM-18)",
+      "options": [
+        "Commodity Market",
+        "Stock Exchange",
+        "Trade Fair",
+        "Central Bank"
+      ],
+      "answer": "Stock Exchange"
+    },
+    {
+      "question": "The principal document that regulates a company's relationship with the outside world, stating its name and objectives, is the ______ (Set Var COM-19)",
+      "options": [
+        "Articles of Association",
+        "Memorandum of Association",
+        "Certificate of Incorporation",
+        "Prospectus"
+      ],
+      "answer": "Memorandum of Association"
+    },
+    {
+      "question": "An agent who sells goods on behalf of a principal by putting them up for bids to the highest bidder is a/an ______ (Set Var COM-20)",
+      "options": [
+        "Broker",
+        "Factor",
+        "Auctioneer",
+        "Del Credere Agent"
+      ],
+      "answer": "Auctioneer"
+    },
+    {
+      "question": "The type of partner who contributes capital to a business but takes no active part in its day-to-day management is called a ______ (Set Var COM-21)",
+      "options": [
+        "Nominal partner",
+        "Sleeping partner",
+        "Active partner",
+        "General partner"
+      ],
+      "answer": "Sleeping partner"
+    },
+    {
+      "question": "A document issued by a carrier acknowledging receipt of goods for transport by sea is the ______ (Set Var COM-22)",
+      "options": [
+        "Air Waybill",
+        "Bill of Lading",
+        "Delivery Note",
+        "Consular Invoice"
+      ],
+      "answer": "Bill of Lading"
+    },
+    {
+      "question": "The practice where a buyer is allowed to possess goods immediately but pays for them in installments while ownership remains with the seller until final payment is called ______ (Set Var COM-23)",
+      "options": [
+        "Credit sale",
+        "Hire purchase",
+        "Cash on delivery",
+        "Leasing"
+      ],
+      "answer": "Hire purchase"
+    },
+    {
+      "question": "The document sent by a seller to a prospective buyer in response to an inquiry, showing prices and terms of sale, is a ______ (Set Var COM-24)",
+      "options": [
+        "Quotation",
+        "Order",
+        "Invoice",
+        "Receipt"
+      ],
+      "answer": "Quotation"
+    },
+    {
+      "question": "Which body is set up by government to protect consumers from artificial scarcity, hoarding, and exploitative prices? (Set Var COM-25)",
+      "options": [
+        "Chamber of Commerce",
+        "Price Control Board",
+        "Trade Union",
+        "Stock Exchange Committee"
+      ],
+      "answer": "Price Control Board"
+    },
+    {
+      "question": "The value of total sales made by a business organization over a specific financial period is known as ______ (Set Var COM-26)",
+      "options": [
+        "Turnover",
+        "Gross Profit",
+        "Net Profit",
+        "Capital employed"
+      ],
+      "answer": "Turnover"
+    },
+    {
+      "question": "The form of communication that allows two or more distant business teams to hold a live visual meeting over high-speed networks is ______ (Set Var COM-27)",
+      "options": [
+        "Telex",
+        "Teleconferencing",
+        "Electronic Mail",
+        "Paging system"
+      ],
+      "answer": "Teleconferencing"
+    },
+    {
+      "question": "A tax levied on goods imported into a country to protect local infant industries is called a ______ (Set Var COM-28)",
+      "options": [
+        "Excise duty",
+        "Tariff",
+        "Direct tax",
+        "Subsidy"
+      ],
+      "answer": "Tariff"
+    },
+    {
+      "question": "The fast checkout retail shop that deals in a wide variety of household goods sorted into independent sections under one roof is a ______ (Set Var COM-29)",
+      "options": [
+        "Departmental store",
+        "Multiple shop",
+        "Supermarket",
+        "Mail-order firm"
+      ],
+      "answer": "Supermarket"
+    },
+    {
+      "question": "The systematic document used to record details of cash received and paid out on a daily basis by a business enterprise is the ______ (Set Var COM-30)",
+      "options": [
+        "Sales journal",
+        "Cash book",
+        "Ledger card",
+        "Invoice file"
+      ],
+      "answer": "Cash book"
+    },
+    {
+      "question": "The specific type of warehouse managed by customs authorities where dutiable import goods are kept until taxes are paid is a/an ______ (Set Var COM-31)",
+      "options": [
+        "Wholesaler's warehouse",
+        "Manufacturer's store",
+        "Bonded warehouse",
+        "Public warehouse"
+      ],
+      "answer": "Bonded warehouse"
+    },
+    {
+      "question": "The insurance principle which states that an insured person can only claim compensation if they suffer a personal financial loss from the damage is ______ (Set Var COM-32)",
+      "options": [
+        "Insurable interest",
+        "Utmost good faith",
+        "Indemnity",
+        "Subrogation"
+      ],
+      "answer": "Insurable interest"
+    },
+    {
+      "question": "The type of credit facility where a bank allows a current account holder to withdraw more money than they actually have in their account is a/an ______ (Set Var COM-33)",
+      "options": [
+        "Loan",
+        "Overdraft",
+        "Subvention",
+        "Lease"
+      ],
+      "answer": "Overdraft"
+    },
+    {
+      "question": "The structural combination of extraction, manufacturing, constructive assembly, and trade distribution activities is collectively known as ______ (Set Var COM-34)",
+      "options": [
+        "Commerce",
+        "Industry",
+        "Occupation",
+        "Business"
+      ],
+      "answer": "Business"
+    },
+    {
+      "question": "The process of tracking, recording, and summarizing financial transactions to help entrepreneurs evaluate business performance is ______ (Set Var COM-35)",
+      "options": [
+        "Management",
+        "Bookkeeping",
+        "Auditing",
+        "Secretarial practice"
+      ],
+      "answer": "Bookkeeping"
+    },
+    {
+      "question": "A type of retail outlet that operates multiple branches in different locations selling identical lines of products under a central management is a ______ (Set Var COM-36)",
+      "options": [
+        "Departmental store",
+        "Chain store",
+        "Mobile shop",
+        "Boutique"
+      ],
+      "answer": "Chain store"
+    },
+    {
+      "question": "The balance of trade is defined as the mathematical difference between the total value of a nation's ______ (Set Var COM-37)",
+      "options": [
+        "Visible imports and visible exports",
+        "Invisible imports and invisible exports",
+        "Total revenue and total expenditure",
+        "Foreign aid and foreign debt"
+      ],
+      "answer": "Visible imports and visible exports"
+    },
+    {
+      "question": "The official document issued by a seller to acknowledge that money has been received for goods delivered is a ______ (Set Var COM-38)",
+      "options": [
+        "Invoice",
+        "Receipt",
+        "Statement of account",
+        "Delivery note"
+      ],
+      "answer": "Receipt"
+    },
+    {
+      "question": "A specialized market intermediary who buys and sells shares on the stock exchange floor exclusively with other brokers is a ______ (Set Var COM-39)",
+      "options": [
+        "Jobber",
+        "Underwriter",
+        "Promoter",
+        "Liquidator"
+      ],
+      "answer": "Jobber"
+    },
+    {
+      "question": "The standard insurance principle which guarantees that the insured is restored to the exact financial position they were in before an accident happened is ______ (Set Var COM-40)",
+      "options": [
+        "Indemnity",
+        "Contribution",
+        "Proximate cause",
+        "Subrogation"
+      ],
+      "answer": "Indemnity"
+    },
+    {
+      "question": "The dynamic sector of commerce that deals with the transmission of written, oral, or digital signals to speed up transactional updates is ______ (Set Var COM-41)",
+      "options": [
+        "Transport",
+        "Communication",
+        "Advertising",
+        "Banking"
+      ],
+      "answer": "Communication"
+    },
+    {
+      "question": "A reduction in the catalog price of goods granted by a manufacturer to a wholesaler to encourage large bulk purchases is a ______ (Set Var COM-42)",
+      "options": [
+        "Cash discount",
+        "Trade discount",
+        "Rebate",
+        "Premium bonus"
+      ],
+      "answer": "Trade discount"
+    },
+    {
+      "question": "The strategic document issued to members of the public inviting them to subscribe or buy shares in a newly floated public limited company is a ______ (Set Var COM-43)",
+      "options": [
+        "Prospectus",
+        "Dividend voucher",
+        "Share certificate",
+        "Debenture bond"
+      ],
+      "answer": "Prospectus"
+    },
+    {
+      "question": "An enterprise set up by an act of parliament or decree, financed by the government to provide public utilities at low costs is a ______ (Set Var COM-44)",
+      "options": [
+        "Public Limited Company",
+        "Public Corporation",
+        "Cooperative Society",
+        "Joint Venture"
+      ],
+      "answer": "Public Corporation"
+    },
+    {
+      "question": "The structural document sent by a seller to a buyer at regular intervals showing summary entries of invoices, payments, and balances due is a ______ (Set Var COM-45)",
+      "options": [
+        "Proforma invoice",
+        "Statement of Account",
+        "Advice note",
+        "Indent"
+      ],
+      "answer": "Statement of Account"
+    },
+    {
+      "question": "The specific commercial activity that involves creating awareness, building brand identity, and boosting consumer product interest via promotions is ______ (Set Var COM-46)",
+      "options": [
+        "Market research",
+        "Advertising",
+        "Public relations",
+        "Salesmanship"
+      ],
+      "answer": "Advertising"
+    },
+    {
+      "question": "A type of business protection cover taken out to guard against structural business disruption due to employee financial fraud or dishonesty is ______ (Set Var COM-47)",
+      "options": [
+        "Life assurance",
+        "Fidelity guarantee insurance",
+        "Marine insurance",
+        "Third-party insurance"
+      ],
+      "answer": "Fidelity guarantee insurance"
+    },
+    {
+      "question": "The containerized shipping option that allows cargo to remain safely grouped inside protective standard metal crates throughout transit is ______ (Set Var COM-48)",
+      "options": [
+        "Chartering",
+        "Containerization",
+        "Haulage",
+        "Tramp shipping"
+      ],
+      "answer": "Containerization"
+    },
+    {
+      "question": "An association of traders or manufacturers formed to promote and protect commercial interests within a specific town, city, or district is a ______ (Set Var COM-49)",
+      "options": [
+        "Trade Union",
+        "Chamber of Commerce",
+        "Cartel",
+        "Consortium"
+      ],
+      "answer": "Chamber of Commerce"
+    },
+    {
+      "question": "The calculated metric derived by dividing the cost of goods sold by the average inventory value held during the fiscal year is the ______ (Set Var COM-50)",
+      "options": [
+        "Rate of turnover",
+        "Profit margin",
+        "Mark-up percentage",
+        "Working capital ratio"
+      ],
+      "answer": "Rate of turnover"
+    },
+    {
+      "question": "The regulatory document that details internal rules for managing the administration, voting rights, and duties of directors within a company is the ______ (Set Var COM-51)",
+      "options": [
+        "Memorandum of Association",
+        "Articles of Association",
+        "Certificate of Trading",
+        "Prospectus"
+      ],
+      "answer": "Articles of Association"
+    },
+    {
+      "question": "The credit instrument that allows cardholders to make instant electronic point-of-sale purchases up to a pre-approved financial limit on deferred terms is a ______ (Set Var COM-52)",
+      "options": [
+        "Debit card",
+        "Credit card",
+        "Smart card",
+        "Voucher card"
+      ],
+      "answer": "Credit card"
+    },
+    {
+      "question": "The distribution function performed when products are repackaged, labeled, and cleanly sorted into standard quantities for easy shelf display is ______ (Set Var COM-53)",
+      "options": [
+        "Grading and branding",
+        "Warehousing",
+        "Wholesaling",
+        "Transporting"
+      ],
+      "answer": "Grading and branding"
+    },
+    {
+      "question": "The specific commercial document used to declare the custom values of import goods, verified by a diplomat from the exporting country, is a ______ (Set Var COM-54)",
+      "options": [
+        "Proforma invoice",
+        "Consular Invoice",
+        "Commercial invoice",
+        "Bill of sight"
+      ],
+      "answer": "Consular Invoice"
+    },
+    {
+      "question": "A type of cooperative society formed by workers to pool savings together and provide low-interest credit access to members is a ______ (Set Var COM-55)",
+      "options": [
+        "Producer cooperative",
+        "Thrift and credit cooperative",
+        "Consumer cooperative",
+        "Wholesale cooperative"
+      ],
+      "answer": "Thrift and credit cooperative"
+    },
+    {
+      "question": "The basic document sent ahead of delivery to inform a buyer that a shipment has been dispatched and is on its way is a/an ______ (Set Var COM-56)",
+      "options": [
+        "Advice Note",
+        "Invoice",
+        "Credit note",
+        "Indent"
+      ],
+      "answer": "Advice Note"
+    },
+    {
+      "question": "The regulatory act of protecting buyers against misleading adverts, defective weights, and substandard goods is called ______ (Set Var COM-57)",
+      "options": [
+        "Consumer protection",
+        "Market segmentation",
+        "Public relations",
+        "Sales promotion"
+      ],
+      "answer": "Consumer protection"
+    },
+    {
+      "question": "The legal right that permits an insurance company to step into the shoes of the insured and sue negligent third parties after settling a claim is ______ (Set Var COM-58)",
+      "options": [
+        "Contribution",
+        "Subrogation",
+        "Indemnity",
+        "Proximate cause"
+      ],
+      "answer": "Subrogation"
+    },
+    {
+      "question": "The calculation formula used to find the working capital of a business organization is ______ (Set Var COM-59)",
+      "options": [
+        "Current Assets minus Current Liabilities",
+        "Fixed Assets plus Current Assets",
+        "Gross Profit minus Expenses",
+        "Total Assets minus Capital"
+      ],
+      "answer": "Current Assets minus Current Liabilities"
+    },
+    {
+      "question": "The traditional trade scenario where international transactions are managed using an overseas purchasing agent via specialized orders is called a/an ______ (Set Var COM-60)",
+      "options": [
+        "Indent",
+        "Bill of exchange",
+        "Letter of credit",
+        "Manifest"
+      ],
+      "answer": "Indent"
+    },
+    {
+      "question": "A document sent by a seller to a buyer to reduce the amount owed due to an overcharge, or for returned faulty items, is a ______ (Set Var COM-61)",
+      "options": [
+        "Invoice",
+        "Debit note",
+        "Credit Note",
+        "Receipt"
+      ],
+      "answer": "Credit Note"
+    },
+    {
+      "question": "The process of winding up the operations of a limited company, selling off assets, and paying off creditors is called ______ (Set Var COM-62)",
+      "options": [
+        "Incorporation",
+        "Liquidation",
+        "Amalgamation",
+        "Floatation"
+      ],
+      "answer": "Liquidation"
+    },
+    {
+      "question": "An insurance contract that pays out a fixed lump sum of money upon the death of the insured or after a specified period of years is ______ (Set Var COM-63)",
+      "options": [
+        "Marine insurance",
+        "Endowment assurance",
+        "Fidelity guarantee",
+        "Fire insurance"
+      ],
+      "answer": "Endowment assurance"
+    },
+    {
+      "question": "The document signed by the master of a ship listing all the cargo loaded on board for a voyage is called the ship's ______ (Set Var COM-64)",
+      "options": [
+        "Manifest",
+        "Logbook",
+        "Bill of lading",
+        "Charter party"
+      ],
+      "answer": "Manifest"
+    },
+    {
+      "question": "The reduction in a bill granted to a buyer to encourage prompt payment within a stipulated time limit is called a ______ (Set Var COM-65)",
+      "options": [
+        "Trade discount",
+        "Cash discount",
+        "Quantity rebate",
+        "Allowance"
+      ],
+      "answer": "Cash discount"
+    },
+    {
+      "question": "A retail format where goods are sold through slots in an automated machine after inserting coins or tokens is a ______ (Set Var COM-66)",
+      "options": [
+        "Vending machine",
+        "Mobile shop",
+        "Mail order",
+        "Supermarket kiosk"
+      ],
+      "answer": "Vending machine"
+    },
+    {
+      "question": "The regulatory government document required before an exporter can ship restricted goods out of a country is an export ______ (Set Var COM-67)",
+      "options": [
+        "License",
+        "Manifest",
+        "Bill of entry",
+        "Invoice"
+      ],
+      "answer": "License"
+    },
+    {
+      "question": "The formal document used by a merchant to borrow money from a bank using stored goods in a public warehouse as collateral security is a ______ (Set Var COM-68)",
+      "options": [
+        "Dock warrant",
+        "Warehouse warrant",
+        "Delivery order",
+        "Bill of sight"
+      ],
+      "answer": "Warehouse warrant"
+    },
+    {
+      "question": "The specific stock exchange speculator who buys shares with the expectation that prices will rise in the future so they can sell at a profit is a ______ (Set Var COM-69)",
+      "options": [
+        "Bear",
+        "Bull",
+        "Stag",
+        "Broker"
+      ],
+      "answer": "Bull"
+    },
+    {
+      "question": "The payment terms where a buyer must pay for goods before they are offloaded or delivered to their warehouse is ______ (Set Var COM-70)",
+      "options": [
+        "Cash on delivery",
+        "Prompt cash",
+        "Cash with order",
+        "Deferred payment"
+      ],
+      "answer": "Cash with order"
+    },
+    {
+      "question": "The document issued by customs when an importer does not have complete details of incoming goods but wants to offload them for inspection is a ______ (Set Var COM-71)",
+      "options": [
+        "Bill of sight",
+        "Bill of entry",
+        "Customs manifest",
+        "Delivery order"
+      ],
+      "answer": "Bill of sight"
+    },
+    {
+      "question": "The mode of transport most suitable for moving high-value, light-weight, and highly perishable goods across international borders quickly is ______ (Set Var COM-72)",
+      "options": [
+        "Sea transport",
+        "Rail transport",
+        "Air transport",
+        "Pipeline transport"
+      ],
+      "answer": "Air transport"
+    },
+    {
+      "question": "The financial reward earned by a shareholder as their share of a company's distributed net profits is called a ______ (Set Var COM-73)",
+      "options": [
+        "Interest",
+        "Dividend",
+        "Premium",
+        "Commission"
+      ],
+      "answer": "Dividend"
+    },
+    {
+      "question": "The written agreement that outlines the rules, profit-sharing ratios, and capital contributions of members running a partnership is the ______ (Set Var COM-74)",
+      "options": [
+        "Partnership Deed",
+        "Prospectus",
+        "Certificate of Incorporation",
+        "Company Statute"
+      ],
+      "answer": "Partnership Deed"
+    },
+    {
+      "question": "A trade policy where a country does not impose tariffs, quotas, or restrictions on imports and exports is called ______ (Set Var COM-75)",
+      "options": [
+        "Protectionism",
+        "Free trade",
+        "Bilateral monopoly",
+        "Autarky"
+      ],
+      "answer": "Free trade"
+    },
+    {
+      "question": "The type of commercial document that serves as a polite invoice sent to show how much a transaction would cost, often used for custom clearances, is a ______ (Set Var COM-76)",
+      "options": [
+        "Proforma Invoice",
+        "Debit note",
+        "Delivery note",
+        "Consular invoice"
+      ],
+      "answer": "Proforma Invoice"
+    },
+    {
+      "question": "The component of a business that represents long-term physical assets like buildings, land, and machinery used to generate revenue is ______ (Set Var COM-77)",
+      "options": [
+        "Liquid capital",
+        "Fixed capital",
+        "Working capital",
+        "Circulating capital"
+      ],
+      "answer": "Fixed capital"
+    },
+    {
+      "question": "The primary risk management body or professional who assesses risk levels and calculates the premium an insured client must pay is an insurance ______ (Set Var COM-78)",
+      "options": [
+        "Underwriter",
+        "Broker",
+        "Agent",
+        "Actuary"
+      ],
+      "answer": "Underwriter"
+    },
+    {
+      "question": "The document issued by a warehouse manager to a buyer certifying that goods listed are being held at their facility is a ______ (Set Var COM-79)",
+      "options": [
+        "Delivery order",
+        "Warehouse receipt",
+        "Dock warrant",
+        "Invoice pack"
+      ],
+      "answer": "Warehouse receipt"
+    },
+    {
+      "question": "The stock exchange speculator who sells shares anticipating that market prices will drop in the near future so they can buy them back cheaper is a ______ (Set Var COM-80)",
+      "options": [
+        "Bull",
+        "Bear",
+        "Stag",
+        "Jobber"
+      ],
+      "answer": "Bear"
+    },
+    {
+      "question": "The type of business communication that uses electronic pulses to transmit exact facsimiles of documents over telephone wires is ______ (Set Var COM-81)",
+      "options": [
+        "Telex",
+        "Fax",
+        "Telegram",
+        "E-mail"
+      ],
+      "answer": "Fax"
+    },
+    {
+      "question": "The business asset group comprising item items that can be converted into cash within a single operating year is called ______ (Set Var COM-82)",
+      "options": [
+        "Fixed assets",
+        "Current assets",
+        "Intangible assets",
+        "Fictitious assets"
+      ],
+      "answer": "Current assets"
+    },
+    {
+      "question": "A document issued by an exporter's bank guaranteeing that payment will be made to the exporter once shipping documents are presented is a ______ (Set Var COM-83)",
+      "options": [
+        "Bill of exchange",
+        "Letter of Credit",
+        "Bill of lading",
+        "Indorsement note"
+      ],
+      "answer": "Letter of Credit"
+    },
+    {
+      "question": "The specific mode of retail selling where customers select items directly from shelves and pay at a checkout counter without shop assistance is ______ (Set Var COM-84)",
+      "options": [
+        "Self-service",
+        "Mail order",
+        "Mobile retailing",
+        "Automatic vending"
+      ],
+      "answer": "Self-service"
+    },
+    {
+      "question": "The unique business structure where consumers combine capital to purchase goods directly from wholesalers and sell them cheaply to members is a ______ (Set Var COM-85)",
+      "options": [
+        "Consumer Cooperative Society",
+        "Partnership firm",
+        "Private company",
+        "Public utility corporation"
+      ],
+      "answer": "Consumer Cooperative Society"
+    },
+    {
+      "question": "The mode of inland transport used exclusively for the bulk movement of fluid items like crude oil, water, and gas is ______ (Set Var COM-86)",
+      "options": [
+        "Rail transport",
+        "Road transport",
+        "Pipeline transport",
+        "Sea transport"
+      ],
+      "answer": "Pipeline transport"
+    },
+    {
+      "question": "An agent who guarantees that a buyer will pay for goods, and accepts liability if the buyer defaults, is a/an ______ (Set Var COM-87)",
+      "options": [
+        "Broker",
+        "Factor",
+        "Del Credere Agent",
+        "Auctioneer"
+      ],
+      "answer": "Del Credere Agent"
+    },
+    {
+      "question": "The commercial documentation process that proves ownership of a unique invention and protects it from unauthorized reproduction is a ______ (Set Var COM-88)",
+      "options": [
+        "Patent right",
+        "Trademark",
+        "Copyright",
+        "Brand license"
+      ],
+      "answer": "Patent right"
+    },
+    {
+      "question": "The legal identity granted to a limited company upon incorporation meaning it can sue and be sued in its own name is called a ______ (Set Var COM-89)",
+      "options": [
+        "Separate legal entity",
+        "Ultra vires privilege",
+        "Limited liability",
+        "Perpetual succession"
+      ],
+      "answer": "Separate legal entity"
+    },
+    {
+      "question": "The commercial document signed by a buyer to confirm that goods have been delivered in good physical condition is a ______ (Set Var COM-90)",
+      "options": [
+        "Delivery Note",
+        "Invoice",
+        "Credit note",
+        "Consignment note"
+      ],
+      "answer": "Delivery Note"
+    },
+    {
+      "question": "The type of check that contains two parallel lines across its face, meaning it can only be paid into a bank account and not cashed over the counter, is a ______ (Set Var COM-91)",
+      "options": [
+        "Open cheque",
+        "Crossed cheque",
+        "Bearer cheque",
+        "Stale cheque"
+      ],
+      "answer": "Crossed cheque"
+    },
+    {
+      "question": "The calculation derived by subtracting the cost of goods sold from the net sales revenue gives the ______ (Set Var COM-92)",
+      "options": [
+        "Net Profit",
+        "Gross Profit",
+        "Turnover balance",
+        "Net asset value"
+      ],
+      "answer": "Gross Profit"
+    },
+    {
+      "question": "The intentional holding back or accumulation of goods by traders to cause artificial scarcity and drive up market prices is called ______ (Set Var COM-93)",
+      "options": [
+        "Hoarding",
+        "Smuggling",
+        "Dumping",
+        "Profiteering"
+      ],
+      "answer": "Hoarding"
+    },
+    {
+      "question": "The short-term unsecured loan facility where a merchant issues an unconditional order in writing requiring a buyer to pay a specific sum at a fixed future date is a ______ (Set Var COM-94)",
+      "options": [
+        "Bill of Exchange",
+        "Promissory note",
+        "Bank draft",
+        "Treasury bill"
+      ],
+      "answer": "Bill of Exchange"
+    },
+    {
+      "question": "The special department in an organization tasked with handling files, incoming mail, typing, and record-keeping operations is the ______ (Set Var COM-95)",
+      "options": [
+        "Accounts office",
+        "Registry or general office",
+        "Sales floor",
+        "Personnel clinic"
+      ],
+      "answer": "Registry or general office"
+    }
+  ]
+}

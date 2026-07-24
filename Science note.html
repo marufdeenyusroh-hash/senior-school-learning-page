@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science Notes</title>
+
+<style>
+/* Basic reset and background setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f7fb;
+  color: #333333;
+}
+
+/* Header Banner Section */
+header {
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 30px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #9ca3af;
+  margin-bottom: 15px;
+}
+
+/* Simple Navigation Links */
+nav {
+  text-align: center;
+}
+
+nav a {
+  color: #9ca3af;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+/* Search Bar Container */
+.search-box {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search-box input {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Subject Filter Buttons */
+.filter-btns {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-btns button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #e2e8f0;
+  margin: 3px;
+  font-weight: bold;
+}
+
+.filter-btns button.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* Main Display Container for Note Cards */
+.container {
+  max-width: 1200px; /* Expanded max-width to allow more roomy layout */
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center; /* Helps center cards on smaller screens */
+}
+
+/* Note Cards Styling - EXPANDED VERSION */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px; /* Slightly softer corners for larger cards */
+  padding: 28px; /* Increased internal space */
+  margin: 15px; /* Added more space between cards */
+  width: 320px; /* Expanded width from 280px to 320px */
+  display: inline-block; /* Arranges cards side-by-side naturally */
+  vertical-align: top;
+  text-align: left;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08); /* Smoother, larger shadow */
+} 
+
+.category {
+  font-size: 13px; /* Slightly larger text */
+  padding: 6px 12px; /* Roomier badge sizing */
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 16px; /* Pushes content down more */
+  color: white;
+  font-weight: bold;
+}
+
+/* Fixed color assignments for cards */
+.physics-tag { background-color: #ef4444; }
+.chemistry-tag { background-color: #22c55e; }
+.biology-tag { background-color: #10b981; }
+.math-tag { background-color: #3b82f6; }
+
+.card h3 {
+  font-size: 20px; /* Enlarged title sizing */
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 15px; /* Enlarged body copy text */
+  color: #555555;
+  margin-bottom: 24px; /* More space before action buttons */
+  line-height: 1.5; /* Makes paragraphs easier to read */
+}
+
+/* Links inside the cards - EXPANDED */
+.actions a {
+  display: inline-block;
+  margin-right: 12px;
+  padding: 10px 16px; /* Larger tap targets */
+  background-color: #2563eb;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.actions a:hover {
+  background-color: #1e40af;
+}
+
+/* Pop-up Frame Overlay (Hidden by Default) */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+}
+
+/* Inner pop-up window setup */
+.modal-content {
+  background-color: #ffffff;
+  width: 80%;
+  height: 80%;
+  margin: 5% auto;
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📄 Science Notes</h1>
+  <p>Search, read and download study materials</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Science note.html">Notes</a>
+    <a href="Science past question.html">Past Question</a>
+    <a href="Science Quiz page.html">Quiz</a>
+    <a href="Science video.html">Videos</a>
+  </nav>
+</header>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search notes by title..." onkeyup="searchNotes()">
+</div>
+
+<div class="filter-btns" id="btnGroup">
+  <button class="active" onclick="filterNotes('all', this)">All</button>
+  <button onclick="filterNotes('physics', this)">Physics</button>
+  <button onclick="filterNotes('chemistry', this)">Chemistry</button>
+  <button onclick="filterNotes('Biology', this)">Biology</button>
+  <button onclick="filterNotes('Mathematics', this)">Mathematics</button>
+  <button onclick="filterNotes('English language', this)">English language</button>
+
+</div>
+
+<div class="container" id="notesContainer">
+
+  <div class="card" data-category="chemistry">
+    <span class="category chemistry-tag">Chemistry</span>
+    <h3>Atomic Structure</h3>
+    <p>Learn about atoms, electrons and protons.</p>
+    <div class="actions">
+      <a href="#" onclick="openPDF('notes/atomic.pdf')">📖 Read</a>
+      <a href="notes/atomic.pdf" download>📥 Download</a>
+    </div>
+  </div>
+
+  <div class="card" data-category="chemistry">
+    <span class="category chemistry-tag">Chemistry</span>
+    <h3>Chemical Bonding</h3>
+    <p>Understand ionic and covalent bonding.</p>
+    <div class="actions">
+      <a href="#" onclick="openPDF('notes/bonding.pdf')">📖 Read</a>
+      <a href="notes/bonding.pdf" download>📥 Download</a>
+    </div>
+  </div>
+
+  <div class="card" data-category="physics">
+    <span class="category physics-tag">Physics</span>
+    <h3>Motion</h3>
+    <p>Study speed, velocity and acceleration.</p>
+    <div class="actions">
+      <a href="#" onclick="openPDF('SSCE HIDDEN FACTS IN PHYSICS.pdf')">📖 Read</a>
+      <a href="SSCE HIDDEN FACTS IN PHYSICS.pdf" download>📥 Download</a>
+    </div>
+  </div>
+
+  <div class="card" data-category="Biology">
+    <span class="category biology-tag">Biology</span>
+    <h3>Motion</h3>
+    <p>Biology notes.</p>
+    <div class="actions">
+      <a href="#" onclick="openPDF('SSCE HIDDEN FACTS IN PHYSICS.pdf')">📖 Read</a>
+      <a href="SSCE HIDDEN FACTS IN PHYSICS.pdf" download>📥 Download</a>
+    </div>
+  </div>
+
+  <div class="card" data-category="Mathematics">
+    <span class="category math-tag">Mathematics</span>
+    <h3>Motion</h3>
+    <p>Mathematics notes.</p>
+    <div class="actions">
+      <a href="#" onclick="openPDF('SSCE HIDDEN FACTS IN PHYSICS.pdf')">📖 Read</a>
+      <a href="SSCE HIDDEN FACTS IN PHYSICS.pdf" download>📥 Download</a>
+    </div>
+  </div>
+
+  <div class="card" data-category="English language">
+    <span class="category english-tag">English language</span>
+    <h3>Motion</h3>
+    <p>English language notes.</p>
+    <div class="actions">
+      <a href="#" onclick="openPDF('SSCE HIDDEN FACTS IN PHYSICS.pdf')">📖 Read</a>
+      <a href="SSCE HIDDEN FACTS IN PHYSICS.pdf" download>📥 Download</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal" id="pdfModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closePDF()">❌ Close Viewer</span>
+    <iframe id="pdfViewer"></iframe>
+  </div>
+</div>
+
+<script>
+/* FUNCTION TO SHOW OR HIDE CARDS BY CATEGORY */
+function filterNotes(category, clickedButton) {
+  let cards = document.getElementsByClassName('card');
+  let buttons = document.getElementById('btnGroup').getElementsByTagName('button');
+
+  // Step 1: Remove 'active' class styling from all buttons
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].className = "";
+  }
+  // Step 2: Highlight the specific button that was clicked
+  clickedButton.className = "active";
+
+  // Step 3: Loop through cards and decide whether to show or hide them
+  for (let j = 0; j < cards.length; j++) {
+    let cardCategory = cards[j].getAttribute('data-category');
+
+    if (category == 'all') {
+      cards[j].style.display = "inline-block";
+    } else if (cardCategory == category) {
+      cards[j].style.display = "inline-block";
+    } else {
+      cards[j].style.display = "none";
+    }
+  }
+}
+
+/* FUNCTION TO SEARCH CARDS BY TEXT INPUT */
+function searchNotes() {
+  let textInput = document.getElementById('searchInput').value.toLowerCase();
+  let cards = document.getElementsByClassName('card');
+
+  // Basic search engine loop checking text contents
+  for (let i = 0; i < cards.length; i++) {
+    let currentCardText = cards[i].innerText.toLowerCase();
+
+    if (currentCardText.includes(textInput)) {
+      cards[i].style.display = "inline-block";
+    } else {
+      cards[i].style.display = "none";
+    }
+  }
+}
+
+/* POP-UP CONTROLLER COMMANDS */
+function openPDF(filePath) {
+  document.getElementById('pdfViewer').src = filePath;
+  document.getElementById('pdfModal').style.display = "block";
+}
+
+function closePDF() {
+  document.getElementById('pdfModal').style.display = "none";
+  document.getElementById('pdfViewer').src = "";
+}
+</script>
+
+</body>
+</html>
+
+```

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science Dashboard</title>
+
+<style>
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --border-color: #e2e8f0;
+  --sidebar-width: 260px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR SYSTEM */
+aside {
+  width: var(--sidebar-width);
+  background: #ffffff;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.sidebar-brand {
+  padding: 24px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 24px 16px;
+  flex: 1;
+}
+
+.sidebar-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.sidebar-menu li a:hover, .sidebar-menu li.active a {
+  background: #f1f5f9;
+  color: var(--text-main);
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.logout-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: #ef4444;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: #fef2f2;
+  border-color: #fca5a5;
+}
+
+/* MAIN WORKSPACE */
+main {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  padding: 40px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+header p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.back-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--primary);
+}
+
+/* GRID & CARDS */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 28px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.card-icon {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: var(--primary-hover);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  aside {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .sidebar-menu {
+    display: flex;
+    padding: 12px;
+    gap: 8px;
+  }
+  .sidebar-footer {
+    display: none;
+  }
+  main {
+    margin-left: 0;
+    padding: 24px;
+  }
+}
+</style>
+</head>
+<body>
+
+  <aside>
+    <div class="sidebar-brand">
+      <span>🧬</span> Science Hub
+    </div>
+    <ul class="sidebar-menu">
+      <li class="active"><a href="#">Dashboard</a></li>
+      <li><a href="#" onclick="goHome()">Home Portal</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="logout()">Log Out</button>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <h1 id="welcome">Welcome back</h1>
+        <p>Access your curated science materials and research study resources.</p>
+      </div>
+      <a href="#" class="back-link" onclick="goHome()">← Back to Portal</a>
+    </header>
+
+    <section class="features-grid">
+
+      <div class="feature-card">
+        <div>
+          <div class="card-icon">🎥</div>
+          <h3>Video Lessons</h3>
+          <p>Watch foundational Physics, Chemistry, and Biology topics explained clearly through intuitive structural examples.</p>
+        </div>
+        <a href="Science video.html" class="btn">Open Lessons</a>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-icon">📄</div>
+          <h3>Lesson Notes</h3>
+          <p>Read detailed modular notes, comprehensive formulas, and study-guide summaries.</p>
+        </div>
+        <a href="Science note.html" class="btn">Open Notes</a>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-icon">❓</div>
+          <h3>Past Questions</h3>
+          <p>Review comprehensive breakdowns of historical examination trends and sample answers.</p>
+        </div>
+        <a href="Science past question.html" class="btn">Review Papers</a>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-icon">🧠</div>
+          <h3>Interactive Quizzes</h3>
+          <p>Evaluate your real-time knowledge and trace metrics across key syllabus topics.</p>
+        </div>
+        <a href="Science Quiz page.html" class="btn">Start Quiz</a>
+      </div>
+
+    </section>
+  </main>
+
+<script>
+// SHOW USER NAME
+let user = JSON.parse(localStorage.getItem('currentUser'));
+
+if(user){
+  document.getElementById('welcome').innerText = "Welcome, " + user.name;
+} else {
+  window.location.href = "Science login.html";
+}
+
+// LOGOUT
+function logout(){
+  localStorage.removeItem('currentUser');
+  window.location.href = "Science login.html";
+}
+function goHome(){
+  window.location.href = "Science login.html";
+}
+</script>
+
+</body>
+</html>
+
+```

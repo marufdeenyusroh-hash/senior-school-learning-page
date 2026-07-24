@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Questions Hub</title>
+
+<style>
+/* Basic page setup */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0b1220;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Simple Navigation Bar */
+nav {
+  background-color: #111827;
+  padding: 15px;
+  text-align: center;
+}
+
+nav h3 {
+  margin: 0 0 10px 0;
+  float: left;
+}
+
+.nav-links {
+  float: right;
+}
+
+nav a {
+  color: #9ca3af;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+nav a:hover, nav a.active {
+  color: #ffffff;
+}
+
+/* Clearfix for floating elements in nav */
+nav::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Header Area */
+header {
+  text-align: center;
+  padding: 30px;
+}
+
+header p {
+  color: #9ca3af;
+}
+
+/* Selection Section */
+.select-area {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+select {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #1f2937;
+  color: white;
+  border: 1px solid #374151;
+}
+
+.load-btn {
+  padding: 10px 20px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.load-btn:hover {
+  background-color: #4338ca;
+}
+
+/* Content Layout Box */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Exam Question Cards */
+.item {
+  background-color: #111827;
+  border: 1px solid #374151;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+/* Badges / Tags Layout */
+.tag-container {
+  margin-bottom: 10px;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 5px;
+  color: white;
+  display: inline-block;
+}
+
+/* Background colors for different subjects */
+.government { background-color: #ef4444; }
+.literature_in_english { background-color: #22c55e; }
+.yoruba { background-color: #10b981; }
+.math { background-color: #3b82f6; }
+.english { background-color: #f59e0b; }
+.IRS { background-color: #8b5cf6; }
+.CRS { background-color: #8b5cf6; }
+
+/* Background colors for exam boards */
+.waec { background-color: #2563eb; }
+.neco { background-color: #059669; }
+.nabteb { background-color: #f97316; }
+.year { background-color: #4b5563; }
+
+.item h3 {
+  margin: 10px 0 20px 0;
+}
+
+/* Button settings */
+.actions button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.practice {
+  background-color: #059669;
+  color: white;
+}
+
+.download {
+  background-color: #2563eb;
+  color: white;
+}
+
+.bookmark {
+  background-color: #4b5563;
+  color: white;
+}
+
+/* Notification text styling */
+.status-msg {
+  text-align: center;
+  color: #9ca3af;
+  padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h3>EduPortal</h3>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="commercial note.html">Notes</a>
+    <a href="commercial past question.html" class="active">Past Questions</a>
+    <a href="commercial quiz.html">Quiz</a>
+    <a href="commercial video.html">Videos</a>
+  </div>
+</nav>
+
+<header>
+  <h1>Past Examination Archive</h1>
+  <p>Select your subject, exam board, and year below.</p>
+</header>
+
+<div class="select-area">
+  <select id="subject">
+    <option value="">Select Subject</option>
+    <option value="government">Government</option>
+    <option value="literature_in_english">Literature in English</option>
+    <option value="yoruba">Yoruba</option>
+    <option value="math">Mathematics</option>
+    <option value="english">English</option>
+    <option value="computer">Computer Studies</option>
+    <option value="IRS">IRS</option>
+    <option value="CRS">CRS</option>
+
+
+  </select>
+
+  <select id="exam">
+    <option value="">Select Exam</option>
+    <option value="waec">WAEC</option>
+    <option value="neco">NECO</option>
+    <option value="nabteb">NABTEB</option>
+  </select>
+
+  <select id="year">
+    <option value="">Select Year</option>
+    <option value="2023">2023</option>
+    <option value="2022">2022</option>
+    <option value="2021">2021</option>
+  </select>
+
+  <button class="load-btn" onclick="loadPapers()">Load Papers</button>
+</div>
+
+<div class="container" id="container">
+  <div class="status-msg">Please select your filter options above to find papers.</div>
+</div>
+
+<script>
+/* SIMPLE DATA STORE ARRANGEMENT */
+const data = [
+  {subject: "government", exam: "waec", year: "2023", title: "Government WAEC Past Paper 2023", file: "past/gov2023.pdf"},
+  {subject: "literature_in_english", exam: "neco", year: "2022", title: "Literature in English NECO Past Paper 2022", file: "past/lit2022.pdf"},
+  {subject: "yoruba", exam: "nabteb", year: "2021", title: "Yoruba NABTEB Past Paper 2021", file: "past/yoruba2021.pdf"}
+];
+
+/* MAIN FUNCTION FOR FILTERING AND SHOWING CARDS */
+function loadPapers() {
+  // Grab individual user values
+  let selectedSubject = document.getElementById("subject").value;
+  let selectedExam = document.getElementById("exam").value;
+  let selectedYear = document.getElementById("year").value;
+  let container = document.getElementById("container");
+
+  // Empty out whatever content was previously shown inside our result block
+  container.innerHTML = "";
+
+  // Guard block: Check if user left a menu empty
+  if (selectedSubject == "" || selectedExam == "" || selectedYear == "") {
+    container.innerHTML = "<div class='status-msg'>Please select a value for all three dropdown rows.</div>";
+    return;
+  }
+
+  let matchFound = false;
+
+  // Standard beginner 'for' loop to search our database array
+  for (let i = 0; i < data.length; i++) {
+    let paper = data[i];
+
+    // Simple strict comparison tests
+    if (paper.subject == selectedSubject && paper.exam == selectedExam && paper.year == selectedYear) {
+      matchFound = true;
+
+      // Add HTML structure block piece by piece inside our list wrapper frame
+      container.innerHTML += 
+        "<div class='item'>" +
+          "<div class='tag-container'>" +
+            "<span class='tag " + paper.subject + "'>" + paper.subject + "</span>" +
+            "<span class='tag " + paper.exam + "'>" + paper.exam.toUpperCase() + "</span>" +
+            "<span class='tag year'>" + paper.year + "</span>" +
+          "</div>" +
+          "<h3>" + paper.title + "</h3>" +
+          "<div class='actions'>" +
+            "<button class='practice' onclick='openFile(\"" + paper.file + "\")'>Practice</button>" +
+            "<button class='download' onclick='downloadFile(\"" + paper.file + "\")'>Download</button>" +
+            "<button class='bookmark' onclick='saveBookmark(\"" + paper.title + "\")'>Save</button>" +
+          "</div>" +
+        "</div>";
+    }
+  }
+
+  // Fallback text check if nothing matches the selection setup values
+  if (matchFound == false) {
+    container.innerHTML = "<div class='status-msg'>No exam papers matched your search criteria.</div>";
+  }
+}
+
+function openFile(file) {
+  window.open(file, "_blank");
+}
+
+function downloadFile(file) {
+  window.location.href = file;
+}
+
+function saveBookmark(title) {
+  alert("Saved paper: " + title);
+}
+</script>
+
+</body>
+</html>
