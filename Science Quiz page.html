@@ -12,22 +12,16 @@ body{
     background:#eef2f7;
     color:#111827;
 }
-
-/* MAIN CONTAINER */
 .container{
     width:95%;
     margin:20px auto;
 }
-
-/* CARD */
 .card{
     background:white;
     border-radius:14px;
     padding:20px;
     box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
-
-/* START SCREEN */
 #startScreen{
     max-width:500px;
     margin:80px auto;
@@ -38,7 +32,6 @@ body{
     font-size:30px;
     color:#0b2c6a;
 }
-
 select{
     width:100%;
     padding:14px;
@@ -47,22 +40,18 @@ select{
     font-size:16px;
     outline:none;
 }
-
 #quizScreen{
     display:flex;
     gap:20px;
 }
-
 .quiz-right{
     width:280px;
     position:sticky;
     top:20px;
 }
-
 .quiz-left{
     flex:1;
 }
-/* TOP BAR */
 .quiz-header{
     background:#082c6c;
     color:white;
@@ -73,26 +62,21 @@ select{
     justify-content:space-between;
     align-items:center;
 }
-
 .quiz-header h2{
     margin:0;
     font-size:28px;
 }
-
 .timer{
     font-size:28px;
     font-weight:bold;
     color:white;
 }
-
-/* QUESTION CARD */
 .question-card{
     background:white;
     padding:20px;
     border-radius:12px;
     box-shadow:0 2px 8px rgba(0,0,0,0.08);
 }
-
 #qNumber{
     display:inline-block;
     background:#082c6c;
@@ -110,7 +94,6 @@ select{
     margin-bottom:25px;
 }
 
-/* OPTIONS */
 .option{
     display:flex;
     align-items:center;
@@ -124,19 +107,16 @@ select{
     cursor:pointer;
     transition:.2s;
 }
-
 .option:hover{
     border-color:#082c6c;
 }
 
-/* SELECTED OPTION */
 .selected{
     background:#082c6c !important;
     color:white !important;
     border:2px solid #3b82f6;
     position:relative;
 }
-
 .selected::after{
     content:"✓";
     position:absolute;
@@ -147,14 +127,11 @@ select{
     color:#22c55e;
     font-weight:bold;
 }
-
-/* BUTTONS */
 button{
     border:none;
     cursor:pointer;
     font-weight:600;
 }
-
 .start{
     width:100%;
     padding:15px;
@@ -163,7 +140,6 @@ button{
     border-radius:10px;
     font-size:18px;
 }
-
 .nav-btn{
     background:#082c6c;
     color:white;
@@ -171,7 +147,6 @@ button{
     border-radius:10px;
     margin-top:20px;
 }
-
 .submit{
     width:100%;
     padding:16px;
@@ -181,32 +156,25 @@ button{
     margin-top:20px;
     font-size:18px;
 }
-
-/* NAVIGATION */
 .navigation{
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
-
-/* RESULT */
 #resultScreen{
     max-width:800px; /* Widened to fit correction logs nicely */
     margin:40px auto;
     text-align:center;
 }
-
 #score{
     font-size:28px;
     font-weight:bold;
 }
-
 #grade{
     font-size:24px;
     margin-top:15px;
     margin-bottom:30px;
 }
-
 .retry-btn {
     padding: 12px 30px;
     background: #082c6c;
@@ -215,15 +183,12 @@ button{
     font-size: 16px;
     margin-bottom: 30px;
 }
-
-/* CORRECTIONS REVIEW STYLING */
 .review-section {
     text-align: left;
     margin-top: 40px;
     border-top: 2px solid #e5e7eb;
     padding-top: 20px;
 }
-
 .review-item {
     background: #f9fafb;
     border-left: 5px solid #d1d5db;
@@ -231,31 +196,25 @@ button{
     margin-bottom: 15px;
     border-radius: 0 8px 8px 0;
 }
-
 .review-item.correct {
     border-left-color: #22c55e;
     background: #f0fdf4;
 }
-
 .review-item.wrong {
     border-left-color: #ef4444;
     background: #fef2f2;
 }
-
 .review-q {
     font-weight: 600;
     font-size: 18px;
     margin-bottom: 8px;
 }
-
 .review-ans {
     font-size: 15px;
     margin: 4px 0;
 }
-
 .text-success { color: #16a34a; font-weight: 600; }
 .text-danger { color: #dc2626; font-weight: 600; }
-
 .progress-wrap{
     width:100%;
     height:10px;
@@ -264,27 +223,19 @@ button{
     overflow:hidden;
     margin:15px 0;
 }
-
 #progressBar{
     width:0%;
     height:100%;
     background:#082c6c;
     transition:.3s;
 }
-
 .legend{
     margin-top:15px;
     font-size:14px;
 }
-
 .legend p{
     margin:6px 0;
 }
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
-
 .back-btn {
     position: fixed;
     top: 20px;
@@ -301,143 +252,100 @@ button{
     cursor: pointer;
     transition: 0.3s ease;
 }
-
 .back-btn:hover {
     background: white;
     color: #272644;
     transform: none;
 }
-
-
-/* =========================================================
-   TABLET RESPONSIVE
-========================================================= */
-
+/* Tablet resoponses  */
 @media (max-width: 900px) {
 
     .container {
         width: 94%;
         margin: 25px auto;
     }
-
     #quizScreen {
         flex-direction: column;
         gap: 15px;
     }
-
     .quiz-left {
         width: 100%;
     }
-
     .quiz-right {
         width: 100%;
         position: static;
         order: 2;
     }
-
     .quiz-header {
         padding: 16px;
     }
-
     .quiz-header h2 {
         font-size: 24px;
     }
-
     .timer {
         font-size: 22px;
     }
-
     #navigator {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 4px;
     }
-
     .navigation {
         gap: 10px;
     }
-
     .nav-btn {
         flex: 1;
     }
 }
-
-
-/* =========================================================
-   MOBILE PHONE
-========================================================= */
-
+/* Mobile responses */
 @media (max-width: 600px) {
-
     body {
         width: 100%;
         overflow-x: hidden;
     }
-
     .container {
         width: 100%;
         padding: 0 12px;
         margin: 65px auto 25px;
     }
-
-
-    /* BACK BUTTON */
-
     .back-btn {
         top: 15px;
         left: 15px;
         padding: 7px 12px;
         font-size: 13px;
     }
-
-
-    /* START SCREEN */
-
     #startScreen {
         width: 100%;
         max-width: 100%;
         margin: 25px auto;
         padding: 25px 18px;
     }
-
     #startScreen h2 {
         font-size: 26px;
         margin-bottom: 15px;
     }
-
     #startScreen p {
         font-size: 14px;
         margin-bottom: 8px;
     }
-
     #startScreen select {
         width: 100%;
         min-height: 48px;
         font-size: 15px;
     }
-
     #startScreen br {
         display: none;
     }
-
     #startScreen .start {
         margin-top: 15px;
         min-height: 48px;
     }
-
-
-    /* QUIZ SCREEN */
-
     #quizScreen {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
-
-
-    /* QUIZ HEADER */
-
     .quiz-header {
         display: flex;
         flex-direction: column;
@@ -447,16 +355,13 @@ button{
         margin-bottom: 12px;
         border-radius: 10px;
     }
-
     .quiz-header h2 {
         font-size: 21px;
         line-height: 1.3;
     }
-
     .quiz-header small {
         font-size: 13px;
     }
-
     .timer {
         width: 100%;
         text-align: center;
@@ -465,31 +370,21 @@ button{
         border-radius: 8px;
         font-size: 20px;
     }
-
-
-    /* QUESTION CARD */
-
     .question-card {
         padding: 18px 14px;
         border-radius: 10px;
     }
-
     #qNumber {
         font-size: 12px;
         padding: 6px 11px;
         margin-bottom: 15px;
     }
-
     #question {
         font-size: 18px;
         line-height: 1.55;
         margin-bottom: 20px;
         word-wrap: break-word;
     }
-
-
-    /* OPTIONS */
-
     #options {
         width: 100%;
     }
@@ -510,10 +405,6 @@ button{
         right: 12px;
         font-size: 17px;
     }
-
-
-    /* PREVIOUS / NEXT */
-
     .navigation {
         display: flex;
         width: 100%;
@@ -527,20 +418,12 @@ button{
         margin-top: 10px;
         font-size: 14px;
     }
-
-
-    /* SUBMIT */
-
     .submit {
         min-height: 48px;
         padding: 13px;
         font-size: 16px;
         margin-top: 15px;
     }
-
-
-    /* PROGRESS CARD */
-
     .quiz-right {
         width: 100%;
         position: static;
@@ -558,10 +441,6 @@ button{
     .quiz-right p {
         font-size: 14px;
     }
-
-
-    /* QUESTION PALETTE */
-
     #navigator {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -569,7 +448,6 @@ button{
         width: 100%;
         margin-top: 15px;
     }
-
     #navigator button {
         width: 100% !important;
         height: 42px !important;
@@ -577,10 +455,6 @@ button{
         font-size: 13px;
         border-radius: 7px !important;
     }
-
-
-    /* LEGEND */
-
     .legend {
         font-size: 13px;
         display: grid;
@@ -588,14 +462,9 @@ button{
         gap: 5px;
         text-align: center;
     }
-
     .legend p {
         margin: 5px 0;
     }
-
-
-    /* RESULT SCREEN */
-
     #resultScreen {
         width: 100%;
         max-width: 100%;
@@ -611,102 +480,34 @@ button{
     #score {
         font-size: 23px;
     }
-
     #grade {
         font-size: 20px;
         margin-bottom: 20px;
     }
-
     .retry-btn {
         width: 100%;
         min-height: 48px;
         margin-bottom: 20px;
     }
-
-
-    /* REVIEW SECTION */
-
     .review-section {
         margin-top: 25px;
         padding-top: 18px;
     }
-
     .review-section h3 {
         font-size: 20px;
     }
-
     .review-item {
         padding: 13px;
         margin-bottom: 12px;
         overflow-wrap: break-word;
     }
-
     .review-q {
         font-size: 15px;
         line-height: 1.5;
     }
-
     .review-ans {
         font-size: 13px;
         line-height: 1.5;
-    }
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .container {
-        padding: 0 8px;
-    }
-
-    #startScreen {
-        padding: 20px 14px;
-    }
-
-    #startScreen h2 {
-        font-size: 23px;
-    }
-
-    .quiz-header h2 {
-        font-size: 19px;
-    }
-
-    .timer {
-        font-size: 18px;
-    }
-
-    #question {
-        font-size: 17px;
-    }
-
-    .option {
-        font-size: 13px;
-        padding: 12px 10px;
-    }
-
-    #navigator {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    #navigator button {
-        height: 40px !important;
-    }
-
-    .legend {
-        grid-template-columns: 1fr;
-        text-align: left;
-    }
-
-    .navigation {
-        flex-direction: row;
-    }
-
-    .nav-btn {
-        font-size: 13px;
     }
 }
 </style>

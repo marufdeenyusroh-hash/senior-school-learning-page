@@ -4,167 +4,388 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Past Questions Hub</title>
-
 <style>
-/* Basic page setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #0b1220;
   color: #ffffff;
-  margin: 0;
-  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
-
-/* Simple Navigation Bar */
 nav {
   background-color: #111827;
-  padding: 15px;
-  text-align: center;
+  padding: 15px 25px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
 }
-
 nav h3 {
-  margin: 0 0 10px 0;
-  float: left;
+  margin: 0;
+  color: white;
+  font-size: 20px;
+  white-space: nowrap;
 }
 
 .nav-links {
-  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 nav a {
   color: #9ca3af;
   text-decoration: none;
-  margin-left: 20px;
+  font-size: 14px;
+  transition: 0.3s ease;
 }
 
-nav a:hover, nav a.active {
+nav a:hover,
+nav a.active {
   color: #ffffff;
 }
-
-/* Clearfix for floating elements in nav */
-nav::after {
-  content: "";
-  display: table;
-  clear: both;
+.back-btn {
+  position: fixed;
+  top: 75px;
+  left: 20px;
+  z-index: 1000;
+  width: auto;
+  min-height: auto;
+  padding: 8px 15px;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-/* Header Area */
+.back-btn:hover {
+  background: white;
+  color: #272644;
+  transform: none;
+}
 header {
   text-align: center;
-  padding: 30px;
+  padding: 55px 20px 35px;
+}
+
+header h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  margin-bottom: 12px;
+  line-height: 1.2;
 }
 
 header p {
   color: #9ca3af;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* Selection Section */
 .select-area {
-  text-align: center;
-  margin-bottom: 30px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 35px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 select {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 5px;
+  padding: 12px 35px 12px 12px;
+  min-width: 160px;
+  border-radius: 6px;
   background-color: #1f2937;
   color: white;
   border: 1px solid #374151;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
 }
 
+select:focus {
+  border-color: #4f46e5;
+}
 .load-btn {
-  padding: 10px 20px;
+  padding: 12px 20px;
   background-color: #4f46e5;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: 0.3s ease;
 }
 
 .load-btn:hover {
   background-color: #4338ca;
+  transform: translateY(-2px);
 }
-
-/* Content Layout Box */
 .container {
+  width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 10px 20px 50px;
 }
 
-/* Exam Question Cards */
 .item {
   background-color: #111827;
   border: 1px solid #374151;
-  padding: 20px;
+  padding: 22px;
   margin-bottom: 15px;
-  border-radius: 8px;
+  border-radius: 10px;
+  width: 100%;
+  transition: 0.3s ease;
 }
 
-/* Badges / Tags Layout */
+.item:hover {
+  border-color: #4f46e5;
+  transform: translateY(-2px);
+}
+
+.item h3 {
+  margin: 12px 0 20px;
+  font-size: 20px;
+  line-height: 1.4;
+}
 .tag-container {
   margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .tag {
   font-size: 12px;
-  padding: 4px 8px;
+  padding: 5px 9px;
   border-radius: 4px;
-  margin-right: 5px;
   color: white;
   display: inline-block;
+  font-weight: bold;
 }
-
-/* Background colors for different subjects */
-.government { background-color: #ef4444; }
-.literature_in_english { background-color: #22c55e; }
-.yoruba { background-color: #10b981; }
-.math { background-color: #3b82f6; }
-.english { background-color: #f59e0b; }
-.IRS { background-color: #8b5cf6; }
-.CRS { background-color: #8b5cf6; }
-
-/* Background colors for exam boards */
-.waec { background-color: #2563eb; }
-.neco { background-color: #059669; }
-.nabteb { background-color: #f97316; }
-.year { background-color: #4b5563; }
-
-.item h3 {
-  margin: 10px 0 20px 0;
+/* subject */
+.physics {
+  background-color: #ef4444;
 }
-
-/* Button settings */
+.chemistry {
+  background-color: #22c55e;
+}
+.biology {
+  background-color: #10b981;
+}
+.math {
+  background-color: #3b82f6;
+}
+.english {
+  background-color: #f59e0b;
+}
+.computer {
+  background-color: #8b5cf6;
+}
+/* Exam */
+.waec {
+  background-color: #2563eb;
+}
+.neco {
+  background-color: #059669;
+}
+.nabteb {
+  background-color: #f97316;
+}
+.year {
+  background-color: #4b5563;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 .actions button {
-  padding: 8px 15px;
+  padding: 10px 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-right: 10px;
   font-weight: bold;
+  font-size: 14px;
+  transition: 0.3s ease;
 }
-
+.actions button:hover {
+  transform: translateY(-2px);
+}
 .practice {
   background-color: #059669;
   color: white;
 }
-
+.practice:hover {
+  background-color: #047857;
+}
 .download {
   background-color: #2563eb;
   color: white;
 }
 
+.download:hover {
+  background-color: #1d4ed8;
+}
 .bookmark {
   background-color: #4b5563;
   color: white;
 }
-
-/* Notification text styling */
+.bookmark:hover {
+  background-color: #374151;
+}
 .status-msg {
   text-align: center;
   color: #9ca3af;
-  padding: 20px;
+  padding: 30px 20px;
+  line-height: 1.6;
+}
+
+/* /Tablet response */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 15px;
+    gap: 12px;
+  }
+  nav h3 {
+    font-size: 22px;
+  }
+  .nav-links {
+    width: 100%;
+    gap: 12px 18px;
+  }
+  nav a {
+    font-size: 14px;
+  }
+  .back-btn {
+    top: 20px;
+    left: 15px;
+  }
+  header {
+    padding: 45px 20px 30px;
+  }
+  header h1 {
+    font-size: 32px;
+  }
+  .select-area {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  select,
+  .load-btn {
+    width: 100%;
+    max-width: 400px;
+  }
+  .container {
+    padding: 10px 20px 40px;
+  }
+}
+/* MObile  */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  nav {
+    padding: 65px 15px 20px;
+  }
+  nav h3 {
+    font-size: 20px;
+  }
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    max-width: 350px;
+    gap: 12px;
+    text-align: center;
+  }
+  nav a {
+    padding: 8px;
+    background-color: #1f2937;
+    border-radius: 5px;
+  }
+  nav a:hover,nav a.active {
+    background-color: #374151;
+    color: white;
+  }
+  .back-btn {
+    top: 15px;
+    left: 15px;
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+  header {
+    padding: 35px 15px 25px;
+  }
+  header h1 {
+    font-size: 27px;
+  }
+  header p {
+    font-size: 14px;
+  }
+  .select-area {
+    padding: 0 15px;
+    margin-bottom: 25px;
+    gap: 10px;
+  }
+  select,.load-btn {
+    width: 100%;
+    max-width: 100%;
+    min-height: 46px;
+  }
+  .container {
+    padding: 10px 15px 40px;
+  }
+  .item {
+    padding: 18px 15px;
+    border-radius: 8px;
+  }
+  .item h3 {
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  /* TAGS */
+
+  .tag {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .actions button {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .status-msg {
+    font-size: 14px;
+    padding: 25px 10px;
+  }
 }
 </style>
 </head>

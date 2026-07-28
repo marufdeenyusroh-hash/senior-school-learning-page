@@ -13,24 +13,18 @@
   box-sizing:border-box;
   font-family:Segoe UI, sans-serif;
 }
-
 body{
   background:#0b1220;
   color:white;
 }
-
-/* HEADER */
 header{
   padding:25px;
   text-align:center;
   background:linear-gradient(135deg,#0f172a,#1e3a8a);
 }
-
 header h1{
   font-size:26px;
 }
-
-/* CONTROL PANEL */
 .controls{
   display:flex;
   flex-wrap:wrap;
@@ -39,7 +33,6 @@ header h1{
   padding:15px;
   background:#0f172a;
 }
-
 .controls button{
   padding:10px 14px;
   border:none;
@@ -49,33 +42,25 @@ header h1{
   color:white;
   transition:0.3s;
 }
-
 .controls button:hover{
   background:#2563eb;
 }
-
-/* MAIN LAYOUT */
 .layout{
   display:grid;
   grid-template-columns:2fr 1fr;
   gap:20px;
   padding:20px;
 }
-
-/* PLAYER */
 .player-box{
   background:#111827;
   padding:15px;
   border-radius:15px;
 }
-
 .player-box iframe{
   width:100%;
   height:420px;
   border-radius:12px;
 }
-
-/* VIDEO LIST */
 .list{
   background:#111827;
   padding:15px;
@@ -83,7 +68,6 @@ header h1{
   max-height:500px;
   overflow:auto;
 }
-
 .video-item{
   padding:12px;
   margin-bottom:10px;
@@ -92,18 +76,12 @@ header h1{
   cursor:pointer;
   transition:0.2s;
 }
-
 .video-item:hover{
   background:#2563eb;
 }
-
 .video-item.active{
   background:#2563eb;
 }
-/* =========================
-   MODERN DROPDOWN UI
-========================= */
-
 .controls{
   display:flex;
   flex-wrap:wrap;
@@ -114,85 +92,63 @@ header h1{
   backdrop-filter: blur(10px);
   border-bottom:1px solid rgba(255,255,255,0.05);
 }
-
-/* DROPDOWN BASE STYLE */
+/* DROPDOWN STYLE */
 .controls select{
   appearance:none;
   -webkit-appearance:none;
   -moz-appearance:none;
-
   padding:12px 42px 12px 14px;
   border-radius:12px;
-
   border:1px solid rgba(255,255,255,0.08);
   background:linear-gradient(145deg,#111827,#0b1220);
   color:#e5e7eb;
-
   font-size:14px;
   cursor:pointer;
-
   outline:none;
   transition:0.25s ease;
-
   min-width:140px;
-
   /* custom arrow */
   background-image:
     linear-gradient(45deg, transparent 50%, #9ca3af 50%),
     linear-gradient(135deg, #9ca3af 50%, transparent 50%);
-
   background-position:
     calc(100% - 18px) calc(50% - 3px),
     calc(100% - 12px) calc(50% - 3px);
-
   background-size:6px 6px;
   background-repeat:no-repeat;
 }
-
-/* hover effect */
 .controls select:hover{
   border-color:#3b82f6;
   box-shadow:0 0 0 3px rgba(59,130,246,0.15);
   transform:translateY(-1px);
 }
-
-/* focus effect */
 .controls select:focus{
   border-color:#2563eb;
   box-shadow:0 0 0 3px rgba(37,99,235,0.25);
 }
-
-/* LOAD BUTTON UPGRADE */
 .controls button{
   padding:12px 18px;
   border:none;
   border-radius:12px;
   cursor:pointer;
-
   background:linear-gradient(135deg,#2563eb,#1d4ed8);
   color:white;
-
   font-weight:600;
   letter-spacing:0.3px;
-
   transition:0.25s ease;
 }
-
 .controls button:hover{
   transform:translateY(-2px);
   box-shadow:0 10px 20px rgba(37,99,235,0.25);
 }
-
 .controls button:active{
   transform:scale(0.98);
 }
-
 /* RESPONSIVE */
 @media(max-width:900px){
   .layout{
     grid-template-columns:1fr;
   }
-
   .player-box iframe{
     height:250px;
   }
@@ -200,7 +156,6 @@ header h1{
 #videoContainer{
   margin-top:20px;
 }
-
 #videoContainer iframe{
   width:100%;
   height:315px;
