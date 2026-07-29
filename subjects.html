@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subjects - EduPlatform</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<div class="page-hero">
+  <h1>Departments &amp; Subjects</h1>
+  <p>Pick a department to see what you can study, then sign in or register to start.</p>
+</div>
+
+<div class="dept-grid" id="deptGrid"></div>
+
+<div id="site-footer"></div>
+
+<script src="dept-config.js"></script>
+<script src="partials.js"></script>
+<script>
+  loadSiteChrome();
+
+  const grid = document.getElementById("deptGrid");
+  Object.values(DEPARTMENTS).forEach((d) => {
+    const block = document.createElement("div");
+    block.className = "dept-block";
+    block.innerHTML = `
+      <h3>${d.emoji} ${d.label}</h3>
+      <div class="subject-tags">
+        ${d.subjects.map((s) => `<span>${s.label}</span>`).join("")}
+      </div>
+      <a class="btn" href="login.html?dept=${d.key}">Explore ${d.label} →</a>
+    `;
+    grid.appendChild(block);
+  });
+</script>
+</body>
+</html>

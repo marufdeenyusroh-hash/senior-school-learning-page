@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz - EduPlatform</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<div class="page-hero">
+  <h1>Take a Quiz</h1>
+  <p>Pick a department and subject to start a timed practice quiz.</p>
+</div>
+
+<div class="auth-page" style="min-height:auto; padding:0 20px 60px;">
+  <div class="auth-right" style="flex:1; padding:0;">
+    <div class="form-box" style="max-width:420px;">
+      <h2>Quiz Picker</h2>
+      <p class="subtitle">Select a department, then a subject</p>
+
+      <div class="input-box">
+        <select id="deptSelect">
+          <option value="">Select Department</option>
+        </select>
+      </div>
+      <div class="input-box">
+        <select id="subjectSelect" disabled>
+          <option value="">Select a department first</option>
+        </select>
+      </div>
+
+      <button class="btn" onclick="goToQuiz()">Start Quiz →</button>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="dept-config.js"></script>
+<script src="storage.js"></script>
+<script src="partials.js"></script>
+<script>
+  loadSiteChrome();
+
+  const deptSelect = document.getElementById("deptSelect");
+  const subjectSelect = document.getElementById("subjectSelect");
+
+  Object.values(DEPARTMENTS).forEach((d) => {
+    const opt = document.createElement("option");
+    opt.value = d.key;
+    opt.innerText = `${d.emoji} ${d.label}`;
+    deptSelect.appendChild(opt);
+  });
+
+  deptSelect.addEventListener("change", () => {
+    subjectSelect.innerHTML = "";
+    const dept = DEPARTMENTS[deptSelect.value];
+    if (!dept) {
+      subjectSelect.disabled = true;
+      subjectSelect.innerHTML = "<option value=''>Select a department first</option>";
+      return;
+    }
+    subjectSelect.disabled = false;
+    subjectSelect.innerHTML = "<option value=''>Select Subject</option>";
+    dept.subjects.forEach((s) => {
+      const opt = document.createElement("option");
+      opt.value = s.slug;
+      opt.innerText = s.label;
+      subjectSelect.appendChild(opt);
+    });
+  });
+
+  function goToQuiz() {
+    const dept = deptSelect.value;
+    const subject = subjectSelect.value;
+    if (!dept || !subject) {
+      alert("Please select a department and a subject.");
+      return;
+    }
+
+    const target = `take-quiz.html?dept=${encodeURIComponent(dept)}&subject=${encodeURIComponent(subject)}`;
+
+    if (getCurrentUser(dept)) {
+      window.location.href = target;
+    } else {
+      window.location.href = `login.html?dept=${encodeURIComponent(dept)}&next=${encodeURIComponent(target)}`;
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="sidebar-brand" id="sidebarBrand">Hub</div>
+    <ul class="sidebar-menu">
+      <li class="active"><a href="#">Dashboard</a></li>
+      <li><a href="index.html">Home Portal</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="logout-btn" id="logoutBtn">Log Out</button>
+    </div>
+  </aside>
+
+  <main class="dashboard-main">
+    <header>
+      <div>
+        <h1 id="welcome">Welcome back</h1>
+        <p id="tagline"></p>
+      </div>
+      <a href="index.html" class="back-link">← Back to Portal</a>
+    </header>
+
+    <section class="features-grid">
+      <div class="feature-card">
+        <div>
+          <div class="card-icon">🎥</div>
+          <h3>Video Lessons</h3>
+          <p>Watch topics explained clearly through short video lessons.</p>
+        </div>
+        <a href="#" id="linkVideo" class="btn">Open Lessons</a>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-icon">📄</div>
+          <h3>Lesson Notes</h3>
+          <p>Read detailed modular notes and study-guide summaries.</p>
+        </div>
+        <a href="#" id="linkNotes" class="btn">Open Notes</a>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-icon">❓</div>
+          <h3>Past Questions</h3>
+          <p>Review past examination papers by exam board and year.</p>
+        </div>
+        <a href="#" id="linkPast" class="btn">Review Papers</a>
+      </div>
+
+      <div class="feature-card">
+        <div>
+          <div class="card-icon">🧠</div>
+          <h3>Interactive Quizzes</h3>
+          <p>Evaluate your knowledge across key syllabus topics.</p>
+        </div>
+        <a href="#" id="linkQuiz" class="btn">Start Quiz</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="dept-config.js"></script>
+<script src="storage.js"></script>
+<script>
+  const dept = getDept();
+  if (!dept) {
+    window.location.href = "login.html";
+  } else {
+    const user = requireLogin(dept);
+    if (user) {
+      const info = DEPARTMENTS[dept];
+      applyDeptTheme(dept, "Dashboard");
+
+      document.getElementById("sidebarBrand").innerHTML = `<span>${info.emoji}</span> ${info.label} Hub`;
+      document.getElementById("welcome").innerText = "Welcome, " + user.name;
+      document.getElementById("tagline").innerText = info.dashboardTagline;
+
+      const qs = `?dept=${encodeURIComponent(dept)}`;
+      document.getElementById("linkVideo").href = "video.html" + qs;
+      document.getElementById("linkNotes").href = "notes.html" + qs;
+      document.getElementById("linkPast").href = "past-questions.html" + qs;
+      document.getElementById("linkQuiz").href = "quiz.html" + qs;
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        logout();
+        window.location.href = "login.html" + qs;
+      });
+    }
+  }
+</script>
+</body>
+</html>

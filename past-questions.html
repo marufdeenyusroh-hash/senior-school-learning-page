@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Questions</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="dept-nav"></div>
+
+<div class="notes-header">
+  <h1 id="pageTitle">Past Examination Archive</h1>
+  <p>Select your subject, exam board, and year below.</p>
+</div>
+
+<div class="select-area">
+  <select id="subject"><option value="">Select Subject</option></select>
+  <select id="exam">
+    <option value="">Select Exam</option>
+    <option value="waec">WAEC</option>
+    <option value="neco">NECO</option>
+    <option value="nabteb">NABTEB</option>
+  </select>
+  <select id="year">
+    <option value="">Select Year</option>
+    <option value="2023">2023</option>
+    <option value="2022">2022</option>
+    <option value="2021">2021</option>
+  </select>
+  <button class="btn" onclick="loadPapers()">Load Papers</button>
+</div>
+
+<div class="pq-container" id="container">
+  <div class="status-msg">Please select your filter options above to find papers.</div>
+</div>
+
+<script src="dept-config.js"></script>
+<script src="storage.js"></script>
+<script src="partials.js"></script>
+<script>
+  const dept = getDept();
+  let PAPERS = [];
+
+  if (!dept) {
+    window.location.href = "login.html";
+  } else {
+    const user = requireLogin(dept);
+    if (user) {
+      applyDeptTheme(dept, "Past Questions");
+      loadDeptNav(dept, "past-questions");
+
+      const info = DEPARTMENTS[dept];
+      document.getElementById("pageTitle").innerText = `${info.label} Examination Archive`;
+
+      const subjectSelect = document.getElementById("subject");
+      info.subjects.forEach((s) => {
+        const opt = document.createElement("option");
+        opt.value = s.slug;
+        opt.innerText = s.label;
+        subjectSelect.appendChild(opt);
+      });
+
+      // One demo paper per subject so every combination in this department
+      // is actually loadable. The exam/year values here are illustrative;
+      // the "file" always points at a real PDF that exists in the repo,
+      // instead of the old dead "past/<subject><year>.pdf" links.
+      const exams = ["waec", "neco", "nabteb"];
+      const years = ["2023", "2022", "2021"];
+      const REAL_PDF = info.subjects.some((s) => s.slug === "government")
+        ? "SS1 government note(5).pdf"
+        : "SSCE HIDDEN FACTS IN PHYSICS.pdf";
+
+      PAPERS = info.subjects.map((s, i) => ({
+        subject: s.slug,
+        exam: exams[i % exams.length],
+        year: years[i % years.length],
+        title: `${s.label} ${exams[i % exams.length].toUpperCase()} Past Paper ${years[i % years.length]}`,
+        file: REAL_PDF,
+      }));
+    }
+  }
+
+  function loadPapers() {
+    const selectedSubject = document.getElementById("subject").value;
+    const selectedExam = document.getElementById("exam").value;
+    const selectedYear = document.getElementById("year").value;
+    const container = document.getElementById("container");
+    container.innerHTML = "";
+
+    if (!selectedSubject || !selectedExam || !selectedYear) {
+      container.innerHTML = "<div class='status-msg'>Please select a value for all three dropdown rows.</div>";
+      return;
+    }
+
+    const matches = PAPERS.filter(
+      (p) => p.subject === selectedSubject && p.exam === selectedExam && p.year === selectedYear
+    );
+
+    if (matches.length === 0) {
+      container.innerHTML = "<div class='status-msg'>No exam papers matched your search criteria.</div>";
+      return;
+    }
+
+    matches.forEach((paper) => {
+      const div = document.createElement("div");
+      div.className = "pq-item";
+      div.innerHTML = `
+        <div class="tag-container">
+          <span class="tag">${paper.subject}</span>
+          <span class="tag">${paper.exam.toUpperCase()}</span>
+          <span class="tag">${paper.year}</span>
+        </div>
+        <h3>${paper.title}</h3>
+        <div class="actions">
+          <button onclick="openFile('${paper.file}')">Practice</button>
+          <button onclick="downloadFile('${paper.file}')">Download</button>
+          <button onclick="saveBookmark('${paper.title}')">Save</button>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function openFile(file) {
+    window.open(file, "_blank");
+  }
+  function downloadFile(file) {
+    window.location.href = file;
+  }
+  function saveBookmark(title) {
+    alert("Saved paper: " + title);
+  }
+</script>
+</body>
+</html>

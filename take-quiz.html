@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="dept-nav"></div>
+
+<div class="quiz-wrap">
+
+  <div id="startScreen" class="quiz-card">
+    <h2>Start Quiz</h2>
+    <p>Select Subject</p>
+    <select id="subject"></select>
+    <br><br>
+    <p>Select Number of Questions</p>
+    <select id="questionCount"></select>
+    <br><br>
+    <button class="btn" onclick="startQuiz()">Start Quiz</button>
+  </div>
+
+  <div id="quizScreen" class="quiz-screen" style="display:none;">
+    <div class="quiz-left">
+      <div class="quiz-header">
+        <div>
+          <h2 id="subjectTitle">CBT Examination</h2>
+          <small>Total Questions: <span id="totalQuestions"></span></small>
+        </div>
+        <span class="timer" id="timer"></span>
+      </div>
+
+      <div class="question-card">
+        <span id="qNumber"></span>
+        <h3 id="question"></h3>
+        <div id="options"></div>
+        <div class="navigation">
+          <button class="nav-btn" onclick="prevQ()">Previous</button>
+          <button class="nav-btn" onclick="nextQ()">Next</button>
+        </div>
+        <button class="submit" onclick="submitQuiz()">Submit Quiz</button>
+      </div>
+    </div>
+
+    <div class="quiz-right">
+      <div class="quiz-card">
+        <h3>Exam Progress</h3>
+        <p>Answered: <strong id="answeredCount">0</strong></p>
+        <p>Remaining: <strong id="remainingCount">0</strong></p>
+        <div class="progress-wrap"><div id="progressBar"></div></div>
+        <hr>
+        <h3>Question Palette</h3>
+        <div id="navigator"></div>
+        <div class="legend">
+          <p>🟦 Current</p>
+          <p>🟩 Answered</p>
+          <p>🟨 Unanswered</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="resultScreen" class="quiz-card" style="display:none;">
+    <h2>Result</h2>
+    <p id="score"></p>
+    <p id="grade"></p>
+    <button class="retry-btn" onclick="location.reload()">Retry Quiz</button>
+    <div class="review-section">
+      <h3>Corrections &amp; Review</h3>
+      <div id="reviewContainer"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="dept-config.js"></script>
+<script src="storage.js"></script>
+<script src="partials.js"></script>
+<script>
+  const dept = getDept();
+  let questions = [];
+  let currentQ = 0;
+  let answers = [];
+  let time = 0;
+  let timerInterval;
+
+  if (!dept) {
+    window.location.href = "login.html";
+  } else {
+    const user = requireLogin(dept);
+    if (user) {
+      applyDeptTheme(dept, "Quiz");
+      loadDeptNav(dept, "quiz");
+      setupStartScreen();
+    }
+  }
+
+  function setupStartScreen() {
+    const info = DEPARTMENTS[dept];
+    const subjectSelect = document.getElementById("subject");
+    info.subjects.forEach((s) => {
+      const opt = document.createElement("option");
+      opt.value = s.quizFile;
+      opt.innerText = s.label;
+      subjectSelect.appendChild(opt);
+    });
+
+    const countSelect = document.getElementById("questionCount");
+    QUESTION_COUNT_OPTIONS.forEach((n) => {
+      const opt = document.createElement("option");
+      opt.value = n;
+      opt.innerText = `${n} Questions`;
+      if (n === 50) opt.selected = true;
+      countSelect.appendChild(opt);
+    });
+
+    // Deep-link support: ?subject=<slug> preselects and can auto-start.
+    const requestedSlug = new URLSearchParams(location.search).get("subject");
+    if (requestedSlug) {
+      const match = findSubject(dept, requestedSlug);
+      if (match) {
+        subjectSelect.value = match.quizFile;
+        startQuiz();
+      }
+    }
+  }
+
+  function startQuiz() {
+    const selectedFile = document.getElementById("subject").value;
+
+    fetch(selectedFile)
+      .then((res) => res.json())
+      .then((data) => {
+        const key = Object.keys(data)[0];
+        const count = parseInt(document.getElementById("questionCount").value);
+
+        questions = shuffleArray(data[key]).slice(0, count);
+
+        const subjectSelect = document.getElementById("subject");
+        const subjectName = subjectSelect.options[subjectSelect.selectedIndex].text;
+        document.getElementById("subjectTitle").innerText = subjectName + " Examination";
+        document.getElementById("totalQuestions").innerText = questions.length;
+
+        currentQ = 0;
+        answers = [];
+        time = questions.length * 60;
+
+        document.getElementById("startScreen").style.display = "none";
+        document.getElementById("quizScreen").style.display = "flex";
+
+        startTimer();
+        loadQuestion();
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Failed to load question file");
+      });
+  }
+
+  function loadQuestion() {
+    const q = questions[currentQ];
+    if (!q) return;
+
+    document.getElementById("qNumber").innerText = `Question ${currentQ + 1}/${questions.length}`;
+    document.getElementById("question").innerText = q.question || q.q;
+
+    let html = "";
+    q.options.forEach((opt, i) => {
+      const selectedClass = answers[currentQ] === opt ? "selected" : "";
+      html += `<button class="option ${selectedClass}" onclick="selectOption(${i})">${opt}</button>`;
+    });
+    document.getElementById("options").innerHTML = html;
+
+    updateNavigator();
+    updateStats();
+  }
+
+  function selectOption(i) {
+    const q = questions[currentQ];
+    answers[currentQ] = q.options[i];
+    loadQuestion();
+  }
+
+  function updateNavigator() {
+    let navHTML = "";
+    questions.forEach((q, index) => {
+      let bg = "#fef3c7";
+      if (index === currentQ) bg = "var(--accent)";
+      else if (answers[index] !== undefined) bg = "#22c55e";
+
+      navHTML += `<button onclick="goToQuestion(${index})" style="background:${bg};color:${index === currentQ ? "white" : "black"};">${index + 1}</button>`;
+    });
+    document.getElementById("navigator").innerHTML = navHTML;
+  }
+
+  function updateStats() {
+    const answered = answers.filter((a) => a !== undefined).length;
+    const remaining = questions.length - answered;
+    document.getElementById("answeredCount").innerText = answered;
+    document.getElementById("remainingCount").innerText = remaining;
+    document.getElementById("progressBar").style.width = (answered / questions.length) * 100 + "%";
+  }
+
+  function nextQ() {
+    if (currentQ < questions.length - 1) {
+      currentQ++;
+      loadQuestion();
+    }
+  }
+  function prevQ() {
+    if (currentQ > 0) {
+      currentQ--;
+      loadQuestion();
+    }
+  }
+  function goToQuestion(index) {
+    currentQ = index;
+    loadQuestion();
+  }
+
+  function startTimer() {
+    const render = () => {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      document.getElementById("timer").innerText = `Time: ${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    };
+    render();
+    timerInterval = setInterval(() => {
+      time--;
+      render();
+      if (time <= 0) submitQuiz();
+    }, 1000);
+  }
+
+  function submitQuiz() {
+    clearInterval(timerInterval);
+
+    let score = 0;
+    let reviewHTML = "";
+
+    questions.forEach((q, i) => {
+      const isCorrect = answers[i] === q.answer;
+      if (isCorrect) score++;
+
+      const statusClass = isCorrect ? "correct" : "wrong";
+      const userAnsText = answers[i] !== undefined ? answers[i] : "[No Answer Selected]";
+
+      reviewHTML += `
+        <div class="review-item ${statusClass}">
+          <div class="review-q">Question ${i + 1}: ${q.question || q.q}</div>
+          <div class="review-ans">Your Answer: <span class="${isCorrect ? "text-success" : "text-danger"}">${userAnsText}</span></div>
+          <div class="review-ans">Correct Answer: <span class="text-success">${q.answer}</span></div>
+        </div>
+      `;
+    });
+
+    const percent = (score / questions.length) * 100;
+
+    document.getElementById("quizScreen").style.display = "none";
+    document.getElementById("resultScreen").style.display = "block";
+    document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
+    document.getElementById("grade").innerText =
+      percent >= 70 ? "Grade: A" :
+      percent >= 60 ? "Grade: B" :
+      percent >= 50 ? "Grade: C" :
+      percent >= 40 ? "Grade: D" :
+      percent >= 30 ? "Grade: E" : "Grade: F";
+
+    document.getElementById("reviewContainer").innerHTML = reviewHTML;
+  }
+
+  function shuffleArray(array) {
+    return array
+      .map((v) => ({ v, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ v }) => v);
+  }
+</script>
+</body>
+</html>

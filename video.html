@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videos</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="dept-nav"></div>
+
+<div class="video-header">
+  <h1 id="pageTitle">📚 Video Learning Hub</h1>
+  <p>SS1 – SS3 video lessons</p>
+</div>
+
+<div class="video-controls">
+  <select id="subjectSelect"></select>
+  <button class="btn" onclick="loadVideosFromDropdown()">Load Videos</button>
+</div>
+
+<div class="video-layout">
+  <div class="player-box">
+    <iframe id="player" src="" allowfullscreen></iframe>
+  </div>
+  <div class="video-list" id="videoList"></div>
+</div>
+
+<div id="videoContainer" style="max-width:1100px; margin:0 auto 60px; padding:0 20px;"></div>
+
+<script src="dept-config.js"></script>
+<script src="storage.js"></script>
+<script src="videos-data.js"></script>
+<script src="partials.js"></script>
+<script>
+  const dept = getDept();
+  let currentSubject = "";
+
+  if (!dept) {
+    window.location.href = "login.html";
+  } else {
+    const user = requireLogin(dept);
+    if (user) {
+      applyDeptTheme(dept, "Videos");
+      loadDeptNav(dept, "video");
+
+      const info = DEPARTMENTS[dept];
+      document.getElementById("pageTitle").innerText = `📚 ${info.label} Video Learning Hub`;
+
+      const subjectSelect = document.getElementById("subjectSelect");
+      info.subjects.forEach((s) => {
+        const opt = document.createElement("option");
+        opt.value = s.slug;
+        opt.innerText = s.label;
+        subjectSelect.appendChild(opt);
+      });
+
+      loadVideosFromDropdown();
+    }
+  }
+
+  function loadVideosFromDropdown() {
+    const subject = document.getElementById("subjectSelect").value;
+    loadVideos(subject);
+  }
+
+  function loadVideos(subject) {
+    currentSubject = subject;
+    const list = (VIDEO_DATA[dept] && VIDEO_DATA[dept][subject]) || [];
+    const container = document.getElementById("videoList");
+    container.innerHTML = "";
+    document.getElementById("videoContainer").innerHTML = "";
+
+    if (list.length === 0) {
+      container.innerHTML = "<p>No videos available for this selection</p>";
+      document.getElementById("player").src = "";
+      return;
+    }
+
+    list.forEach((video, index) => {
+      container.innerHTML += `
+        <div class="video-item ${index === 0 ? "active" : ""}" onclick="selectTopic(${index}, this)">
+          ${video.title}
+        </div>
+      `;
+    });
+
+    const first = list[0];
+    const firstUrl = first.url || first.videos?.[0]?.url || "";
+    document.getElementById("player").src = firstUrl;
+    if (!firstUrl) showComingSoon();
+  }
+
+  function selectTopic(index, element) {
+    const topic = VIDEO_DATA[dept][currentSubject][index];
+
+    if (topic.videos) {
+      document.getElementById("player").src = topic.videos[0].url;
+      showTopic(topic);
+    } else if (topic.url) {
+      document.getElementById("player").src = topic.url;
+      document.getElementById("videoContainer").innerHTML = "";
+    } else {
+      document.getElementById("player").src = "";
+      showComingSoon();
+    }
+
+    document.querySelectorAll(".video-item").forEach((el) => el.classList.remove("active"));
+    element.classList.add("active");
+  }
+
+  function showTopic(topic) {
+    const container = document.getElementById("videoContainer");
+    container.innerHTML = `
+      <h2>${topic.title}</h2>
+      ${topic.videos.map((video) => `
+        <iframe width="560" height="315" src="${video.url}" title="YouTube video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe><br><br>
+      `).join("")}
+    `;
+  }
+
+  function showComingSoon() {
+    document.getElementById("videoContainer").innerHTML = "<p>This topic's video isn't uploaded yet — check back soon.</p>";
+  }
+</script>
+</body>
+</html>

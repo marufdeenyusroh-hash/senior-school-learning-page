@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="dept-nav"></div>
+
+<div class="notes-header">
+  <h1 id="pageTitle">📄 Notes</h1>
+  <p>Search, read and download study materials</p>
+</div>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search notes by title..." onkeyup="searchNotes()">
+</div>
+
+<div class="filter-btns" id="btnGroup"></div>
+
+<div class="notes-container" id="notesContainer"></div>
+
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-modal-content">
+    <span class="close-btn" onclick="closePDF()">❌ Close Viewer</span>
+    <iframe id="pdfViewer"></iframe>
+  </div>
+</div>
+
+<script src="dept-config.js"></script>
+<script src="storage.js"></script>
+<script src="partials.js"></script>
+<script>
+  const dept = getDept();
+  if (!dept) {
+    window.location.href = "login.html";
+  } else {
+    const user = requireLogin(dept);
+    if (user) {
+      applyDeptTheme(dept, "Notes");
+      loadDeptNav(dept, "notes");
+
+      const info = DEPARTMENTS[dept];
+      document.getElementById("pageTitle").innerText = `📄 ${info.label} Notes`;
+
+      // Only two real PDF assets exist in the repo today — everything else
+      // falls back to the general one, same as the original demo content
+      // did, just without the dead "notes/*.pdf" links it used to point to.
+      const PDF_BY_SLUG = {
+        government: "SS1 government note(5).pdf",
+      };
+      const DEFAULT_PDF = "SSCE HIDDEN FACTS IN PHYSICS.pdf";
+
+      const btnGroup = document.getElementById("btnGroup");
+      const allBtn = document.createElement("button");
+      allBtn.className = "active";
+      allBtn.innerText = "All";
+      allBtn.onclick = () => filterNotes("all", allBtn);
+      btnGroup.appendChild(allBtn);
+
+      info.subjects.forEach((s) => {
+        const b = document.createElement("button");
+        b.innerText = s.label;
+        b.onclick = () => filterNotes(s.slug, b);
+        btnGroup.appendChild(b);
+      });
+
+      const container = document.getElementById("notesContainer");
+      info.subjects.forEach((s) => {
+        const pdf = PDF_BY_SLUG[s.slug] || DEFAULT_PDF;
+        const card = document.createElement("div");
+        card.className = "note-card";
+        card.dataset.category = s.slug;
+        card.innerHTML = `
+          <span class="category">${s.label}</span>
+          <h3>Introduction to ${s.label}</h3>
+          <p>Study notes covering key topics in ${s.label}.</p>
+          <div class="actions">
+            <a href="#" onclick="openPDF('${pdf}'); return false;">📖 Read</a>
+            <a href="${pdf}" download>📥 Download</a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+  }
+
+  function filterNotes(category, clickedButton) {
+    const cards = document.querySelectorAll(".note-card");
+    document.querySelectorAll("#btnGroup button").forEach((b) => b.className = "");
+    clickedButton.className = "active";
+    cards.forEach((card) => {
+      const match = category === "all" || card.dataset.category === category;
+      card.style.display = match ? "block" : "none";
+    });
+  }
+
+  function searchNotes() {
+    const term = document.getElementById("searchInput").value.toLowerCase();
+    document.querySelectorAll(".note-card").forEach((card) => {
+      card.style.display = card.innerText.toLowerCase().includes(term) ? "block" : "none";
+    });
+  }
+
+  function openPDF(file) {
+    document.getElementById("pdfViewer").src = file;
+    document.getElementById("pdfModal").classList.add("open");
+  }
+  function closePDF() {
+    document.getElementById("pdfModal").classList.remove("open");
+    document.getElementById("pdfViewer").src = "";
+  }
+</script>
+</body>
+</html>
