@@ -1,0 +1,41 @@
+/* ==========================================
+   GLOBAL VARIABLES
+========================================== */
+
+:root{
+
+    /* Colors */
+    --primary: #082c6c;
+    --primary-hover: #0b3f99;
+
+    --secondary: #22c55e;
+
+    --white: #ffffff;
+    --black: #000000;
+
+    --text: #374151;
+    --light-text: #6b7280;
+
+    --background: #f5f7fb;
+    --card: #ffffff;
+
+    --border: #e5e7eb;
+
+    --warning: #f59e0b;
+    --danger: #ef4444;
+
+    /* Radius */
+    --radius: 10px;
+    --radius-large: 15px;
+
+    /* Shadow */
+    --shadow: 0 5px 15px rgba(0,0,0,.1);
+
+    /* Spacing */
+    --space-1: 5px;
+    --space-2: 10px;
+    --space-3: 15px;
+    --space-4: 20px;
+    --space-5: 30px;
+
+}

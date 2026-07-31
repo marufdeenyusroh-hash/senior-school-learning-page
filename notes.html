@@ -1,118 +1,747 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Notes</title>
-<link rel="stylesheet" href="styles.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f7fb;
+  color: #333333;
+}
+
+header {
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 30px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #9ca3af;
+  margin-bottom: 15px;
+}
+
+nav {
+  text-align: center;
+}
+
+nav a {
+  color: #9ca3af;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+.search-box {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search-box input {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.filter-btns {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-btns button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #e2e8f0;
+  margin: 3px;
+  font-weight: bold;
+}
+
+.filter-btns button.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 28px;
+  margin: 15px;
+  width: 320px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+.category {
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.physics-tag {
+  background-color: #ef4444;
+}
+
+.chemistry-tag {
+  background-color: #22c55e;
+}
+
+.biology-tag {
+  background-color: #10b981;
+}
+
+.math-tag {
+  background-color: #3b82f6;
+}
+
+.general-tag {
+  background-color: #8b5cf6;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 15px;
+  color: #555555;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.actions a {
+  display: inline-block;
+  margin-right: 12px;
+  padding: 10px 16px;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.actions a:hover {
+  background-color: #1e40af;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  width: 80%;
+  height: 80%;
+  margin: 5% auto;
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  padding: 8px 15px;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.back-btn:hover {
+  background: white;
+  color: #272644;
+}
+
+@media (max-width: 600px) {
+
+  .back-btn {
+    top: 15px;
+    left: 15px;
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+
+  .card {
+    width: calc(100% - 30px);
+  }
+
+  .modal-content {
+    width: 95%;
+    height: 80%;
+  }
+}
+</style>
+
 </head>
+
 <body>
 
-<div id="dept-nav"></div>
-
-<div class="notes-header">
+<button class="back-btn" onclick="goBack()">← Back </button>
+<header>
   <h1 id="pageTitle">📄 Notes</h1>
+
   <p>Search, read and download study materials</p>
-</div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="notes.html">Notes</a>
+    <a href="past-questions.html">Past Questions</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="video.html">Videos</a>
+  </nav>
+</header>
 
 <div class="search-box">
-  <input type="text" id="searchInput" placeholder="Search notes by title..." onkeyup="searchNotes()">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search notes by title..."
+    onkeyup="searchNotes()"
+  >
 </div>
 
 <div class="filter-btns" id="btnGroup"></div>
 
-<div class="notes-container" id="notesContainer"></div>
+<div class="container" id="notesContainer"></div>
 
-<div class="pdf-modal" id="pdfModal">
-  <div class="pdf-modal-content">
-    <span class="close-btn" onclick="closePDF()">❌ Close Viewer</span>
-    <iframe id="pdfViewer"></iframe>
-  </div>
+
 </div>
-
-<script src="dept-config.js"></script>
-<script src="storage.js"></script>
-<script src="partials.js"></script>
+<script src="js/storage.js"></script>
 <script>
-  const dept = getDept();
-  if (!dept) {
-    window.location.href = "login.html";
-  } else {
-    const user = requireLogin(dept);
-    if (user) {
-      applyDeptTheme(dept, "Notes");
-      loadDeptNav(dept, "notes");
+// ==========================================
+// GET CURRENT USER
+// ==========================================
 
-      const info = DEPARTMENTS[dept];
-      document.getElementById("pageTitle").innerText = `📄 ${info.label} Notes`;
+const currentUser =
+  JSON.parse(localStorage.getItem("currentUser"));
 
-      // Only two real PDF assets exist in the repo today — everything else
-      // falls back to the general one, same as the original demo content
-      // did, just without the dead "notes/*.pdf" links it used to point to.
-      const PDF_BY_SLUG = {
-        government: "SS1 government note(5).pdf",
-      };
-      const DEFAULT_PDF = "SSCE HIDDEN FACTS IN PHYSICS.pdf";
 
-      const btnGroup = document.getElementById("btnGroup");
-      const allBtn = document.createElement("button");
-      allBtn.className = "active";
-      allBtn.innerText = "All";
-      allBtn.onclick = () => filterNotes("all", allBtn);
-      btnGroup.appendChild(allBtn);
+// ==========================================
+// CHECK LOGIN
+// ==========================================
 
-      info.subjects.forEach((s) => {
-        const b = document.createElement("button");
-        b.innerText = s.label;
-        b.onclick = () => filterNotes(s.slug, b);
-        btnGroup.appendChild(b);
-      });
+if (!currentUser) {
 
-      const container = document.getElementById("notesContainer");
-      info.subjects.forEach((s) => {
-        const pdf = PDF_BY_SLUG[s.slug] || DEFAULT_PDF;
-        const card = document.createElement("div");
-        card.className = "note-card";
-        card.dataset.category = s.slug;
-        card.innerHTML = `
-          <span class="category">${s.label}</span>
-          <h3>Introduction to ${s.label}</h3>
-          <p>Study notes covering key topics in ${s.label}.</p>
-          <div class="actions">
-            <a href="#" onclick="openPDF('${pdf}'); return false;">📖 Read</a>
-            <a href="${pdf}" download>📥 Download</a>
-          </div>
-        `;
-        container.appendChild(card);
-      });
+  window.location.href = "login.html";
+
+}
+
+
+// ==========================================
+// GET DEPARTMENT
+// ==========================================
+
+let department =
+  currentUser.department || "science";
+
+department =
+  department.toLowerCase();
+
+
+// ==========================================
+// NOTES DATA
+// ==========================================
+
+const notesData = {
+
+  science: {
+
+    name: "Science",
+
+    subjects: [
+      "Physics",
+      "Chemistry",
+      "Biology",
+      "Mathematics",
+      "English language"
+    ],
+
+    notes: [
+
+      {
+        category: "Chemistry",
+        title: "Atomic Structure",
+        description: "Learn about atoms, electrons and protons.",
+        file: "notes/atomic.pdf"
+      },
+
+      {
+        category: "Chemistry",
+        title: "Chemical Bonding",
+        description: "Understand ionic and covalent bonding.",
+        file: "notes/bonding.pdf"
+      },
+
+      {
+        category: "Physics",
+        title: "Motion",
+        description: "Study speed, velocity and acceleration.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      },
+
+      {
+        category: "Biology",
+        title: "Biology Notes",
+        description: "Study important Biology concepts.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      },
+
+      {
+        category: "Mathematics",
+        title: "Mathematics Notes",
+        description: "Study important Mathematics concepts.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      },
+
+      {
+        category: "English language",
+        title: "English Notes",
+        description: "Study important English language topics.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      }
+
+    ]
+
+  },
+
+
+  commercial: {
+
+    name: "Commercial",
+
+    subjects: [
+      "Commerce",
+      "Financial Accounting",
+      "Office Practice",
+      "Mathematics",
+      "English language"
+    ],
+
+    notes: [
+
+      {
+        category: "Commerce",
+        title: "Commerce Note",
+        description: "Learn about Commerce.",
+        file: "notes/atomic.pdf"
+      },
+
+      {
+        category: "Commerce",
+        title: "Commerce Note",
+        description: "Learn more about Commerce.",
+        file: "notes/atomic.pdf"
+      },
+
+      {
+        category: "Financial Accounting",
+        title: "Accounting Notes",
+        description: "Learn more about Financial Accounting.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      },
+
+      {
+        category: "Office Practice",
+        title: "Office Practice",
+        description: "Learn more about Office Practice.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      },
+
+      {
+        category: "Mathematics",
+        title: "Mathematics",
+        description: "Mathematics notes.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      },
+
+      {
+        category: "English language",
+        title: "English",
+        description: "English language notes.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      }
+
+    ]
+
+  },
+
+
+  art: {
+
+    name: "Art",
+
+    subjects: [
+      "Government",
+      "Literature in English",
+      "Yoruba",
+      "IRS",
+      "CRS",
+      "Mathematics",
+      "English language"
+    ],
+
+    notes: [
+
+      {
+        category: "Government",
+        title: "Government Note",
+        description: "Learn about Government.",
+        file: "notes/atomic.pdf"
+      },
+
+      {
+        category: "Government",
+        title: "Government Note",
+        description: "Learn more about Government.",
+        file: "notes/atomic.pdf"
+      },
+
+      {
+        category: "Literature in English",
+        title: "Literature in English Notes",
+        description: "Learn more about Literature in English.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      },
+
+      {
+        category: "Yoruba",
+        title: "Yoruba",
+        description: "Learn more about Yoruba.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      },
+
+      {
+        category: "Mathematics",
+        title: "Mathematics",
+        description: "Mathematics notes.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      },
+
+      {
+        category: "English language",
+        title: "English",
+        description: "English language notes.",
+        file: "SSCE HIDDEN FACTS IN PHYSICS.pdf"
+      },
+      {
+      category: "IRS",
+      title: "Islamic Religious Studies",
+      description: "Study important Islamic Religious Studies topics.",
+      file: "notes/irs.pdf"
+      },
+
+    {
+    category: "CRS",
+    title: "Christian Religious Studies",
+    description: "Study important Christian Religious Studies topics.",
+    file: "notes/crs.pdf"
+    },
+    ]
+
+  }
+
+};
+
+
+// ==========================================
+// CHECK DEPARTMENT
+// ==========================================
+
+if (!notesData[department]) {
+
+  department = "science";
+
+}
+
+
+// ==========================================
+// CURRENT DEPARTMENT DATA
+// ==========================================
+
+const currentNotes =
+  notesData[department];
+
+
+// ==========================================
+// UPDATE PAGE TITLE
+// ==========================================
+
+document.title =
+  `${currentNotes.name} Notes`;
+
+document.getElementById("pageTitle").innerHTML =
+  `📄 ${currentNotes.name} Notes`;
+
+
+// ==========================================
+// CREATE FILTER BUTTONS
+// ==========================================
+
+const btnGroup =
+  document.getElementById("btnGroup");
+
+currentNotes.subjects.forEach(subject => {
+
+  const button =
+    document.createElement("button");
+
+  button.textContent = subject;
+
+  button.onclick = function() {
+
+    filterNotes(subject, button);
+
+  };
+
+  btnGroup.appendChild(button);
+
+});
+
+
+// ==========================================
+// ADD ALL BUTTON
+// ==========================================
+
+const allButton =
+  document.createElement("button");
+
+allButton.textContent = "All";
+
+allButton.classList.add("active");
+
+allButton.onclick = function() {
+
+  filterNotes("all", allButton);
+
+};
+
+btnGroup.prepend(allButton);
+
+
+// ==========================================
+// DISPLAY NOTES
+// ==========================================
+
+const notesContainer =
+  document.getElementById("notesContainer");
+
+
+function displayNotes(notes) {
+
+  notesContainer.innerHTML = "";
+
+  notes.forEach(note => {
+
+    const card =
+      document.createElement("div");
+
+    card.className = "card";
+
+    card.setAttribute(
+      "data-category",
+      note.category
+    );
+
+    card.innerHTML = `
+
+      <span class="category general-tag">
+        ${note.category}
+      </span>
+
+      <h3>${note.title}</h3>
+
+      <p>${note.description}</p>
+
+      <div class="actions">
+
+        <a href="${note.file}" target="_blank">
+        📖 Read
+        </a>
+        <a href="${note.file}" download>
+          📥 Download
+        </a>
+
+      </div>
+
+    `;
+    notesContainer.appendChild(card);
+
+  });
+
+}
+
+
+displayNotes(currentNotes.notes);
+
+
+// ==========================================
+// FILTER NOTES
+// ==========================================
+
+function filterNotes(category, clickedButton) {
+
+  const buttons =
+    btnGroup.getElementsByTagName("button");
+
+  for (let button of buttons) {
+
+    button.classList.remove("active");
+
+  }
+
+  clickedButton.classList.add("active");
+
+  const cards =
+    document.getElementsByClassName("card");
+
+  for (let card of cards) {
+
+    const cardCategory =
+      card.getAttribute("data-category");
+
+    if (
+      category === "all" ||
+      cardCategory === category
+    ) {
+
+      card.style.display =
+        "inline-block";
+
+    } else {
+
+      card.style.display =
+        "none";
+
     }
+
   }
 
-  function filterNotes(category, clickedButton) {
-    const cards = document.querySelectorAll(".note-card");
-    document.querySelectorAll("#btnGroup button").forEach((b) => b.className = "");
-    clickedButton.className = "active";
-    cards.forEach((card) => {
-      const match = category === "all" || card.dataset.category === category;
-      card.style.display = match ? "block" : "none";
-    });
+}
+
+
+// ==========================================
+// SEARCH NOTES
+// ==========================================
+
+function searchNotes() {
+
+  const textInput =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase();
+
+  const cards =
+    document.getElementsByClassName("card");
+
+  for (let card of cards) {
+
+    const cardText =
+      card.innerText.toLowerCase();
+
+    if (
+      cardText.includes(textInput)
+    ) {
+
+      card.style.display =
+        "inline-block";
+
+    } else {
+
+      card.style.display =
+        "none";
+
+    }
+
   }
 
-  function searchNotes() {
-    const term = document.getElementById("searchInput").value.toLowerCase();
-    document.querySelectorAll(".note-card").forEach((card) => {
-      card.style.display = card.innerText.toLowerCase().includes(term) ? "block" : "none";
-    });
-  }
+}
 
-  function openPDF(file) {
-    document.getElementById("pdfViewer").src = file;
-    document.getElementById("pdfModal").classList.add("open");
-  }
-  function closePDF() {
-    document.getElementById("pdfModal").classList.remove("open");
-    document.getElementById("pdfViewer").src = "";
-  }
+
+// ==========================================
+// PDF VIEWER
+// ==========================================
+
+
+
+
+// ==========================================
+// BACK BUTTON
+// ==========================================
+
+function goBack() {
+
+  window.location.href =
+    "dashboard.html";
+
+}
+
 </script>
+
 </body>
 </html>

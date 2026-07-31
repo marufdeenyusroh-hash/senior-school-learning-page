@@ -11,18 +11,33 @@
     <nav class="Headline">
         <h2 class="Edu">EduPlatform</h2>
         <ul>
-    <li><a href="home.html">Home</a></li>
+    <li><a href="index.html">Home</a></li>
 
     <li>
-        <a href="#">Department</a>
-        <ul class="dropdown">
-            <li><a href="login.html?dept=science">Science</a></li>
-            <li><a href="login.html?dept=commercial">Commercial</a></li>
-            <li><a href="login.html?dept=art">Art</a></li>
-        </ul>
-    </li>
+    <a href="#">Department</a>
 
-    <li><a href="quiz.html">Quiz</a></li>
+    <ul class="dropdown">
+        <li>
+            <a href="login.html?department=science">
+                Science
+            </a>
+        </li>
+
+        <li>
+            <a href="login.html?department=commercial">
+                Commercial
+            </a>
+        </li>
+
+        <li>
+            <a href="login.html?department=art">
+                Art
+            </a>
+        </li>
+    </ul>
+</li>
+
+    <li><a href="quiz.html">About us</a></li>
 </ul>
     </nav>
         <section class="hero">
@@ -42,7 +57,7 @@
     </section>
         </div>
     </section>
-    <img src="boy.jpeg" alt="jpeg">
+    <img src="boy.jpeg" alt="Students studying online">
     <section class="vission-mission">
         <div class="vm">
         <div class="vision">
@@ -110,6 +125,7 @@
   <p class="developer">Developed by <strong>Marufdeen Yusroh Opeyemi</strong></p>
 </div>
 </footer>
+<script src="js/storage.js"></script>
 <script>
 function subscribe(){
   let email = document.getElementById('subscriberEmail').value;
@@ -131,5 +147,7 @@ function subscribe(){
   document.getElementById('subscriberEmail').value = "";
 }
 </script>
+<script src="js/login.js"></script>
+
 </body>
 </html>
