@@ -941,12 +941,17 @@ main.dashboard-main {
 }
 
 .hero {
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(79, 70, 229, 0.65)),
+    url("AFRICAN.jpg") center/cover no-repeat;
+  padding: 90px 5% 70px;
+}
+.hero-inner {
   display: flex;
   align-items: center;
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 70px 5% 60px;
 }
 .hero-text {
   flex: 1;
@@ -954,7 +959,7 @@ main.dashboard-main {
 }
 .eyebrow {
   display: inline-block;
-  color: var(--accent);
+  color: #c7d2fe;
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 1px;
@@ -965,10 +970,10 @@ main.dashboard-main {
   font-size: clamp(32px, 4vw, 46px);
   line-height: 1.2;
   margin-bottom: 18px;
-  color: var(--text-main);
+  color: white;
 }
 .hero-text p {
-  color: var(--text-muted);
+  color: #e5e7eb;
   font-size: 17px;
   line-height: 1.7;
   max-width: 520px;
@@ -977,6 +982,7 @@ main.dashboard-main {
 .hero-text .btn {
   padding: 14px 26px;
   font-size: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 .hero-checklist {
   list-style: none;
@@ -984,36 +990,23 @@ main.dashboard-main {
   flex-wrap: wrap;
   gap: 10px 22px;
   margin-top: 26px;
-  color: var(--text-muted);
+  color: #e5e7eb;
   font-size: 14px;
 }
 .hero-visual {
   flex: 1;
   min-width: 280px;
-  position: relative;
   display: flex;
   justify-content: center;
 }
 .hero-visual img {
-  position: relative;
-  z-index: 1;
   width: 100%;
   max-width: 420px;
   border-radius: 20px;
-  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
   object-fit: cover;
   aspect-ratio: 4/3;
-}
-.hero-blob {
-  position: absolute;
-  top: 10%;
-  right: 5%;
-  width: 320px;
-  height: 320px;
-  background: var(--accent);
-  opacity: 0.12;
-  border-radius: 50%;
-  filter: blur(10px);
 }
 
 .features {
@@ -1231,9 +1224,8 @@ main.dashboard-main {
   .Headline {
     padding: 14px 24px;
   }
-  .hero {
+  .hero-inner {
     flex-direction: column;
-    padding-top: 40px;
     text-align: center;
   }
   .hero-text p {
