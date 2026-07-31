@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning System</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 </head>
 <body>
@@ -14,7 +14,7 @@
     <li><a href="home.html">Home</a></li>
 
     <li>
-        <a href="#">Department</a>
+        <a href="#">Department ▾</a>
         <ul class="dropdown">
             <li><a href="login.html?dept=science">Science</a></li>
             <li><a href="login.html?dept=commercial">Commercial</a></li>
@@ -25,29 +25,46 @@
     <li><a href="quiz.html">Quiz</a></li>
 </ul>
     </nav>
-        <section class="hero">
-        <div class="overlay"></div>
-        <div class="content">
-            <div class="welcome">
-            <h2>Welcome to</h2>
-        <h1>Learning Platform for Senior Secondary <br> School, Ifelodun, Kwara State</h1>
-            <p>For Senior Secondary Students in Ifelodun, Kwara State</p>
-            <a href="subjects.html" class="btn">Start Learning</a>
-                </div>
-            <section class="features">
-        <div class="card"> <i class="fa fa-video"></i> Video Lessons <p>Learn topics through easy video explanations</p></div>
-        <div class="card"> <i class="fa fa-book"></i> Notes <p> Read and download clear study materials</p></div>
-        <div class="card"> <i class="fa-solid fa-question"></i> Past Question <p> Practice real exam questions</p></div>
-        <div class="card"> <i class="fa fa-person"></i>Quiz <p> Test your knowledge with interactive quizzes</p></div>
-    </section>
+
+    <section class="hero">
+        <div class="hero-text">
+            <span class="eyebrow">Online Learning Platform</span>
+            <h1>Senior Secondary School<br>Learning Platform</h1>
+            <p>Built for Senior Secondary Students in Ifelodun, Kwara State — video lessons, notes, past questions and quizzes, all in one place.</p>
+            <a href="subjects.html" class="btn">Start Learning →</a>
+            <ul class="hero-checklist">
+                <li>✔ Video Lessons</li>
+                <li>✔ Lesson Notes</li>
+                <li>✔ Past Questions</li>
+                <li>✔ Quizzes</li>
+            </ul>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-blob"></div>
+            <img src="boy.jpeg" alt="A student studying online at a computer">
         </div>
     </section>
-    <img src="boy.jpeg" alt="jpeg">
-    <section class="vission-mission">
+
+    <section class="features">
+        <div class="card"> <i class="fa fa-video"></i><h3>Video Lessons</h3><p>Learn topics through easy video explanations</p></div>
+        <div class="card"> <i class="fa fa-book"></i><h3>Notes</h3><p>Read and download clear study materials</p></div>
+        <div class="card"> <i class="fa-solid fa-question"></i><h3>Past Questions</h3><p>Practice real past exam questions</p></div>
+        <div class="card"> <i class="fa fa-brain"></i><h3>Quizzes</h3><p>Test your knowledge with interactive quizzes</p></div>
+    </section>
+
+    <section class="community-banner">
+        <div class="community-overlay"></div>
+        <div class="community-content">
+            <h2>Proudly serving students across Ifelodun, Kwara State</h2>
+            <p>Helping every senior secondary student learn anywhere, using simple technology.</p>
+        </div>
+    </section>
+
+    <section class="vision-mission" id="vision-mission">
         <div class="vm">
         <div class="vision">
         <h2>Our Vision</h2>
-        <p>Our vision is to make learning easier and more accesible for every secondary school student in ifelodun Local Government, Kwara State. We want student to be eable to learn anything at anywhere using simple technology.</p>
+        <p>Our vision is to make learning easier and more accessible for every secondary school student in Ifelodun Local Government, Kwara State. We want students to be able to learn anything, anywhere, using simple technology.</p>
         </div>
         <div class="mission">
         <h2>Our Mission</h2>
@@ -85,7 +102,7 @@
     <div class="footer-box">
       <h3>Quick Links</h3>
       <p><a href="index.html">Home</a></p>
-      <p><a href="#">About</a></p>
+      <p><a href="index.html#vision-mission">About</a></p>
       <p><a href="subjects.html">Subjects</a></p>
       <p><a href="quiz.html">Quiz</a></p>
     </div>

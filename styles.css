@@ -867,3 +867,411 @@ main.dashboard-main {
   color: var(--text-muted);
   font-size: 14px;
 }
+
+/* =====================================================================
+   index.html — marketing homepage
+   ===================================================================== */
+
+.Headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 50px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+}
+.Headline .Edu {
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: 700;
+}
+.Headline ul {
+  list-style: none;
+  display: flex;
+}
+.Headline ul li {
+  position: relative;
+  margin-left: 10px;
+}
+.Headline ul li a {
+  display: block;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+.Headline ul li a:hover {
+  background: #f1f5f9;
+  color: var(--accent);
+  text-decoration: none;
+}
+.Headline ul li .dropdown {
+  width: 180px;
+  background: white;
+  border: 1px solid var(--border-color);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  display: none;
+  padding: 6px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.Headline ul li:hover .dropdown {
+  display: block;
+}
+.Headline ul li .dropdown li {
+  margin-left: 0;
+  width: 100%;
+}
+.Headline ul li .dropdown li a {
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 5% 60px;
+}
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+}
+.eyebrow {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero-text h1 {
+  font-size: clamp(32px, 4vw, 46px);
+  line-height: 1.2;
+  margin-bottom: 18px;
+  color: var(--text-main);
+}
+.hero-text p {
+  color: var(--text-muted);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 26px;
+}
+.hero-text .btn {
+  padding: 14px 26px;
+  font-size: 16px;
+}
+.hero-checklist {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin-top: 26px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.hero-visual {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.hero-visual img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  object-fit: cover;
+  aspect-ratio: 4/3;
+}
+.hero-blob {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 320px;
+  height: 320px;
+  background: var(--accent);
+  opacity: 0.12;
+  border-radius: 50%;
+  filter: blur(10px);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 5% 80px;
+}
+.features .card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 28px 24px;
+  text-align: left;
+  transition: 0.2s ease;
+}
+.features .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+.features .card i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 12%, white);
+  color: var(--accent);
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+.features .card h3 {
+  margin-bottom: 6px;
+  font-size: 17px;
+}
+.features .card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.community-banner {
+  position: relative;
+  min-height: 320px;
+  background-image: url("AFRICAN.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.community-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.85), rgba(15, 23, 42, 0.75));
+}
+.community-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  max-width: 700px;
+  padding: 20px;
+}
+.community-content h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin-bottom: 12px;
+}
+.community-content p {
+  color: #e5e7eb;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.vision-mission {
+  padding: 60px 20px;
+  background: var(--bg-main);
+}
+.vm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.vision,
+.mission {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  transition: 0.2s ease;
+}
+.vision:hover,
+.mission:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+.vision h2,
+.mission h2 {
+  color: var(--text-main);
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+.vision p,
+.mission p {
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.newsletter {
+  background: #0f172a;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+.news-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.news-content i {
+  font-size: 28px;
+  margin-bottom: 14px;
+  color: var(--accent);
+}
+.news-content h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.news-content p {
+  color: #cbd5e1;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.subscribe-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.subscribe-box input {
+  padding: 13px 15px;
+  width: 280px;
+  max-width: 100%;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+.subscribe-box button {
+  padding: 13px 22px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.subscribe-box button:hover {
+  background: var(--accent-hover);
+}
+
+.footer {
+  background: #f1f5f9;
+  padding: 50px 20px 30px;
+}
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-box {
+  width: 200px;
+  max-width: 100%;
+}
+.footer-box h2,
+.footer-box h3 {
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+.footer-box p {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.footer-box a {
+  color: var(--text-muted);
+}
+.footer-box a:hover {
+  color: var(--accent);
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.developer {
+  margin-top: 4px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .Headline {
+    padding: 14px 24px;
+  }
+  .hero {
+    flex-direction: column;
+    padding-top: 40px;
+    text-align: center;
+  }
+  .hero-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-checklist {
+    justify-content: center;
+  }
+  .vm {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .Headline {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+  .Headline ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .Headline ul li {
+    margin: 2px;
+  }
+  .subscribe-box {
+    flex-direction: column;
+    align-items: center;
+  }
+  .subscribe-box input,
+  .subscribe-box button {
+    width: 100%;
+    max-width: 320px;
+  }
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
